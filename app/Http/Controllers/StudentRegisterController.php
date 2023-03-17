@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\StudentUser;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 
@@ -15,7 +16,8 @@ class StudentRegisterController extends Controller
      */
     public function show()
     {
-        return view('student.register');
+        //dd('Student Registration Page');
+        return view('student.sregister');
     }
 
     /**
@@ -27,10 +29,12 @@ class StudentRegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $user = User::create($request->validated());
+        $studentUser = StudentUser::create($request->validated());
 
-        auth()->login($user);
+        auth()->login($studentUser);
 
         return redirect('/')->with('success', "Account successfully registered.");
     }
+
+
 }

@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
+
+
+    Route::get('/cleaar-all-cache', function() {
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        Artisan::call('view:clear');
+        Artisan::call('config:cache');
+        return '<h3>All Cache has been cleared: - Cache, Route, View, Config</h3>';
+    });
     /**
      * Home Routes
      */
@@ -29,8 +38,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Register a  student
          */
-        Route::get('/register-student', 'StudentRegisterController@show')->name('register.show');
-        Route::post('/register-student', 'StudentRegisterController@register')->name('register.perform');
+        //Route::get('/sregister', 'StudentRegisterController@show')->name('register.show');
+        //Route::post('/sregister', 'StudentRegisterController@register')->name('register.perform');
 
         /**
          * Login Routes

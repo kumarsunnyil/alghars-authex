@@ -19,7 +19,7 @@ class StudentUser extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'students';
+    protected $table = 'student_users';
 
     /**
      * The attributes that are mass assignable.
@@ -61,5 +61,14 @@ class StudentUser extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     *
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
