@@ -29,24 +29,23 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-    
 
-$student  =  StudentUser:: create( [
-    'name'=> $request->name,
-    'age'=> $request->age,
-    'email'=> $request->email,
-    'username'=> $request->username,
-   // 'email_verified_at'=> $request->email_verified_at,
-    'grade'=> $request->grade,
-    'password'=> "test123password",
 
-    'password'=> $request->password,
-    'p_name'=> $request->p_name,
-    'phone'=> $request->phone,
-    'location'=> $request->namllocationocatione,
-    'program_name'=> $request->program_name,
-    'message'=> $request->message,
-]);
+        $student  =  StudentUser::create([
+            'name' => $request->name,
+            'age' => $request->age,
+            'email' => $request->email,
+            'username' => $request->username,
+            'grade' => $request->grade,
+            'password' => "test123password", // TODO temporary stub to be later removed
+
+            'password' => $request->password,
+            'p_name' => $request->p_name,
+            'phone' => $request->phone,
+            'location' => $request->namllocationocatione,
+            'program_name' => $request->program_name,
+            'message' => $request->message,
+        ]);
 
         /**
          * TODO
@@ -56,6 +55,13 @@ $student  =  StudentUser:: create( [
          */
         // auth()->login($user);
 
-        return redirect('/login')->with('success', "Account successfully registered.");
+        return redirect('/registered')->with('success', "Account successfully registered.");
+    }
+    /**
+     *
+     */
+    public function registered() {
+        //  dd('Registered Page display');
+        return view('auth.registered');
     }
 }

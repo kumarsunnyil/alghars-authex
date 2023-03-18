@@ -92,9 +92,6 @@
                 <span class="text-danger text-left">{{ $errors->first('message') }}</span>
             @endif
         </div>
-
-
-
         <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
 
         @include('auth.partials.copy')
