@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
-
+    //Route::get('/send-mail', 'AlgharsMailController@index')->name('email');
+    // Route::get('/send-mail', [AlgharsMailController::class, 'index']);
     Route::get('/cleaar-all-cache', function() {
         Artisan::call('cache:clear');
         Artisan::call('route:cache');
@@ -23,6 +24,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Artisan::call('config:cache');
         return '<h3>All Cache has been cleared: - Cache, Route, View, Config</h3>';
     });
+
     /**
      * Home Routes
      */
@@ -85,4 +87,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
     });
+
+
 });
