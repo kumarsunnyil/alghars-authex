@@ -1,40 +1,701 @@
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
+@font-face {
+    font-family: nirmalaUI;
+    src: url(../fonts/Nirmala.ttf); }
 
-main > .container {
-  padding: 60px 15px 0;
-}
+  @font-face {
+    font-family: AlJazeera;
+    src: url(../fonts/Al-Jazeera-Arabic-Regular.ttf); }
 
-.b-example-divider {
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
+  html {
+    font-size: 10px;
+    scroll-behavior: smooth; }
 
-.form-control-dark {
-  color: #fff;
-  background-color: var(--bs-dark);
-  border-color: var(--bs-gray);
-}
-.form-control-dark:focus {
-  color: #fff;
-  background-color: var(--bs-dark);
-  border-color: #fff;
-  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
-}
+  body {
+    background: #fff;
+    font-family: nirmalaUI; }
+    body h1,
+    body h2,
+    body h3,
+    body h4,
+    body h5,
+    body h6,
+    body p {
+      margin: 0; }
+    body .commonBtn {
+      padding: 1rem 3.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif;
+      color: #fff;
+      border-radius: 3.5rem;
+      -webkit-border-radius: 3.5rem;
+      -moz-border-radius: 3.5rem;
+      -ms-border-radius: 3.5rem;
+      -o-border-radius: 3.5rem;
+      background: #26F596;
+      border: none; }
+    body .commonBtn:hover {
+      background: #26F596;
+      color: #fff; }
+    body .arabic {
+      font-family: AlJazeera !important; }
+    body .arabicFont * {
+      font-family: AlJazeera !important; }
+    body .rtl {
+      direction: rtl; }
 
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
+  #header {
+    background: #fff; }
+    #header .navbar-brand img {
+      max-height: 8.8rem; }
+    #header .nav-item {
+      margin-left: 7rem; }
+      #header .nav-item .nav-link {
+        color: #C1C1C1;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        font-size: 2rem; }
+      #header .nav-item .nav-link.active {
+        color: #26F596;
+        border-bottom: .2rem solid #26F596; }
+    #header .languageChenge {
+      background: #26F596;
+      color: #fff;
+      border-radius: 0 0 4rem 4rem;
+      -webkit-border-radius: 0 0 4rem 4rem;
+      -moz-border-radius: 0 0 4rem 4rem;
+      -ms-border-radius: 0 0 4rem 4rem;
+      -o-border-radius: 0 0 4rem 4rem; }
+      #header .languageChenge a {
+        padding: 1rem 1.5rem;
+        padding-top: .15rem;
+        padding-bottom: 1.5rem;
+        color: #fff !important; }
 
-.text-small {
-  font-size: 85%;
-}
+  #banner {
+    background: #fff; }
+    #banner .bannerRight {
+      padding: 4rem 0; }
+    #banner .arobicTitle {
+      font-size: 4rem;
+      font-weight: 300;
+      padding: 1rem 0;
+      color: #027454;
+      text-align: center; }
+    #banner .bannerTitle {
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: #0499F2;
+      text-align: left;
+      line-height: 4.7rem; }
+      #banner .bannerTitle span {
+        color: #027454;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif; }
+    #banner .comunityTxt {
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: #027454;
+      opacity: 0.29;
+      padding-top: .5rem; }
+    #banner .bannerBtnCtrl {
+      margin-top: 5rem; }
+    #banner .slick-dots li button::before {
+      font-family: 'slick';
+      font-size: 36px; }
+    #banner .slick-dots li.slick-active button::before {
+      opacity: .75;
+      color: #26F596; }
+    #banner .slick-dots li button::before {
+      color: #26F596; }
 
-.dropdown-toggle {
-  outline: 0;
-}
+  #multiCards {
+    padding: 23rem 0;
+    background: #fff; }
+    #multiCards .multiCardsCtrl .card {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-color: transparent;
+      border: 1px solid #D6D6D6;
+      border-radius: 24px;
+      opacity: 1;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 5.8rem 4.5rem;
+      height: 100%; }
+      #multiCards .multiCardsCtrl .card .cardNumber {
+        font-size: 20.7rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        color: #26F596;
+        line-height: 0.5;
+        margin: 0; }
+      #multiCards .multiCardsCtrl .card .card-title {
+        font-size: 5.5rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        color: #0499F2;
+        padding-top: 7rem; }
+      #multiCards .multiCardsCtrl .card .card-text {
+        font-size: 2.1rem;
+        font-weight: 400;
+        color: #C1C1C1;
+        padding-top: 5.9rem; }
+    #multiCards .multiCardsCtrl .col:first-child {
+      position: relative;
+      z-index: 999; }
+      #multiCards .multiCardsCtrl .col:first-child .icon-1 {
+        position: absolute;
+        left: 50%;
+        top: -60%;
+        z-index: -1;
+        max-width: 14rem;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0); }
+    #multiCards .multiCardsCtrl .col:last-child {
+      position: relative;
+      z-index: 999; }
+      #multiCards .multiCardsCtrl .col:last-child .icon-2 {
+        position: absolute;
+        left: 70%;
+        bottom: -18%;
+        z-index: -1;
+        max-width: 14rem;
+        transform: translate(-70%, 0);
+        -webkit-transform: translate(-70%, 0);
+        -moz-transform: translate(-70%, 0);
+        -ms-transform: translate(-70%, 0);
+        -o-transform: translate(-70%, 0); }
+
+  #aboutAlghrs {
+    background: #fff;
+    position: relative;
+    padding: 30rem 0; }
+    #aboutAlghrs .aboutLeft {
+      position: relative; }
+      #aboutAlghrs .aboutLeft .aboutTitle {
+        font-size: 5.1rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        color: #027454; }
+      #aboutAlghrs .aboutLeft .aboutText {
+        font-size: 2.2rem;
+        font-weight: 400;
+        padding-top: 2rem;
+        color: #C1C1C1; }
+      #aboutAlghrs .aboutLeft .btn {
+        margin-top: 2rem; }
+      #aboutAlghrs .aboutLeft .icon-3 {
+        position: absolute;
+        top: -60%;
+        left: 4%;
+        min-width: 25rem; }
+      #aboutAlghrs .aboutLeft .icon-4 {
+        position: absolute;
+        bottom: 18%;
+        right: -50%;
+        z-index: -1;
+        min-width: 25rem; }
+    #aboutAlghrs .aboutRight {
+      background: url(../images/aboutBanner.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      height: 100%;
+      padding-bottom: 40rem; }
+    #aboutAlghrs .icon-5 {
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      z-index: 999;
+      min-width: 25rem; }
+
+  #ourService {
+    background: #fff;
+    position: relative; }
+    #ourService .icon-8 {
+      position: absolute;
+      top: 50%;
+      left: -10%; }
+    #ourService .serviceTitle {
+      font-size: 10rem;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif;
+      color: #027454;
+      margin-top: 4rem; }
+    #ourService .serviceSmlTitle {
+      font-size: 5.1rem;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif;
+      color: #0499F2;
+      padding-top: 1rem; }
+    #ourService .innerCard {
+      padding-top: 5rem; }
+      #ourService .innerCard .card {
+        height: 100%;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        background: transparent;
+        border: 1px solid #D6D6D6;
+        border-radius: 24px;
+        opacity: 1;
+        backdrop-filter: blur(23px);
+        -webkit-backdrop-filter: blur(23px);
+        padding: 2rem;
+        padding-top: 0; }
+        #ourService .innerCard .card .cardCount {
+          font-size: 20rem;
+          font-weight: 700;
+          font-family: 'nirmala-ui-bold', sans-serif;
+          color: #26F596; }
+        #ourService .innerCard .card .rightInfo .card-title {
+          color: #0499F2;
+          font-size: 4.5rem;
+          font-weight: 700;
+          font-family: 'nirmala-ui-bold', sans-serif; }
+        #ourService .innerCard .card .rightInfo .rightTxt {
+          font-size: 1.5rem;
+          padding-top: 2.5rem;
+          color: #8E8E8E; }
+        #ourService .innerCard .card .card-footer {
+          background: transparent;
+          border: none; }
+          #ourService .innerCard .card .card-footer .footerText li {
+            font-size: 1.5rem;
+            padding-top: .5rem;
+            color: #8E8E8E; }
+        #ourService .innerCard .card .card-img-top {
+          max-height: 45rem;
+          max-width: 85%;
+          margin: 0 auto; }
+    #ourService .row .col:nth-child(2) {
+      position: relative; }
+      #ourService .row .col:nth-child(2) .icon-7 {
+        position: absolute;
+        right: -37%;
+        top: -24%;
+        max-width: 58rem; }
+      #ourService .row .col:nth-child(2) .card {
+        background: transparent; }
+    #ourService .row .col:last-child {
+      position: relative; }
+      #ourService .row .col:last-child .icon-9 {
+        position: absolute;
+        bottom: -2rem;
+        right: -30%;
+        max-width: 40rem; }
+      #ourService .row .col:last-child .card {
+        background: transparent; }
+
+  #achivements {
+    position: relative;
+    padding: 20rem 0; }
+    #achivements .icon-10 {
+      left: -13%;
+      top: 5%;
+      position: absolute;
+      max-width: 71rem;
+      z-index: -1; }
+    #achivements .icon-11 {
+      position: absolute;
+      right: 3%;
+      top: 0; }
+    #achivements .achivementTitle {
+      color: #027454;
+      font-size: 10rem;
+      font-weight: bold;
+      padding-bottom: 15rem; }
+    #achivements .achivementCards .col .card {
+      background: transparent;
+      border: none; }
+      #achivements .achivementCards .col .card .card-img-top {
+        height: 28rem; }
+      #achivements .achivementCards .col .card .count {
+        color: #0499F2;
+        font-size: 15rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif; }
+      #achivements .achivementCards .col .card .countName {
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: #027454; }
+
+  #algharsNews {
+    position: relative;
+    padding: 20rem 0;
+    padding-top: 0; }
+    #algharsNews .algharsTitle {
+      color: #027454;
+      font-size: 10rem;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif; }
+    #algharsNews .newsSlider {
+      margin-top: 13rem;
+      overflow: hidden; }
+      #algharsNews .newsSlider .singleSlider .card {
+        cursor: all-scroll;
+        margin: 0 3rem;
+        background: transparent;
+        padding: 2rem;
+        border: 1px solid #26F596;
+        border-radius: 24px;
+        opacity: 1;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); }
+        #algharsNews .newsSlider .singleSlider .card .card-body {
+          box-shadow: 1px 1px 11px #00000021;
+          border: 1px solid #0499F2;
+          border-radius: 24px; }
+        #algharsNews .newsSlider .singleSlider .card .card-footer {
+          background: transparent;
+          margin-top: 2.4rem;
+          box-shadow: 1px 1px 11px #00000021;
+          border: 1px solid #0499F2;
+          border-radius: 24px;
+          padding: 2.3rem; }
+          #algharsNews .newsSlider .singleSlider .card .card-footer .card-title {
+            font-size: 4.1rem;
+            font-weight: 700;
+            font-family: 'nirmala-ui-bold', sans-serif;
+            color: #26F596; }
+          #algharsNews .newsSlider .singleSlider .card .card-footer .card-text {
+            font-weight: 400;
+            font-size: 1.8rem;
+            padding-top: 1rem;
+            color: #C1C1C1; }
+    #algharsNews .icon-1 {
+      position: absolute;
+      left: 18%;
+      bottom: 8%;
+      max-width: 10rem; }
+    #algharsNews .icon-2 {
+      position: absolute;
+      bottom: 0;
+      right: 19%; }
+    #algharsNews .icon-12 {
+      position: absolute;
+      top: -10%;
+      right: 30%; }
+
+  #registration {
+    padding-bottom: 12rem; }
+    #registration .registrationTitle {
+      color: #027454;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif;
+      font-size: 10rem;
+      padding-bottom: 5rem; }
+    #registration form .singleInput {
+      margin-bottom: 3.7rem; }
+      #registration form .singleInput label {
+        color: #0499F2;
+        font-size: 2.25rem;
+        font-weight: 400;
+        padding-bottom: .5rem; }
+      #registration form .singleInput input[type="text"], #registration form .singleInput input[type="number"], #registration form .singleInput input[type="email"], #registration form .singleInput textarea, #registration form .singleInput select {
+        padding: 1.6rem 3rem;
+        background-color: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 3px 4px 12px #C1C4C230;
+        border: 1px solid #26F596;
+        border-radius: 35px;
+        color: #168F5B;
+        font-size: 2rem; }
+      #registration form .singleInput input::placeholder, #registration form .singleInput textarea::placeholder {
+        opacity: 0.2; }
+      #registration form .singleInput select option:disabled {
+        opacity: 0.2; }
+    #registration form .form-check-input {
+      height: 3rem;
+      width: 3rem;
+      margin-right: 1rem; }
+    #registration .formRight {
+      padding-left: 3rem;
+      position: relative; }
+      #registration .formRight .singleItem {
+        margin-bottom: 7rem; }
+        #registration .formRight .singleItem .textItem {
+          justify-content: space-between; }
+          #registration .formRight .singleItem .textItem .textWithNumber {
+            position: relative; }
+            #registration .formRight .singleItem .textItem .textWithNumber h2 {
+              font-size: 25rem;
+              font-weight: 700;
+              font-family: 'nirmala-ui-bold', sans-serif;
+              color: #fff;
+              margin-left: 25px;
+              text-shadow: -1px 0 #168f5b6f, 0 1px #168f5b6f, 1px 0 #168f5b6f, 0 -1px #168f5b6f;
+              position: absolute;
+              left: 3%;
+              top: 50%;
+              z-index: -1;
+              transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%); }
+            #registration .formRight .singleItem .textItem .textWithNumber .text {
+              font-size: 2.5rem;
+              font-weight: 400;
+              color: #0499F2;
+              margin-left: 4.5rem;
+              line-height: 1; }
+      #registration .formRight .singleItem:nth-child(even) .textItem {
+        flex-direction: row-reverse; }
+        #registration .formRight .singleItem:nth-child(even) .textItem img {
+          margin-right: 9rem; }
+      #registration .formRight .doubleDash {
+        position: absolute;
+        right: 0;
+        bottom: -12%;
+        max-width: 30rem; }
+
+  #footer {
+    position: relative;
+    padding: 7rem 0;
+    background-image: url(../images/footerBG.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 100% 100%; }
+    #footer h2 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      font-family: 'nirmala-ui-bold', sans-serif;
+      color: #fff;
+      text-transform: uppercase; }
+      #footer h2 span {
+        color: #027454; }
+    #footer h3 {
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: #fff;
+      padding-top: .75rem;
+      text-transform: uppercase; }
+    #footer .downloadInfo {
+      margin-top: 2.5rem;
+      max-width: 25rem; }
+      #footer .downloadInfo .col-6:first-child {
+        border-right: .3rem solid #027454; }
+    #footer .contactInfo {
+      padding-left: 5rem; }
+      #footer .contactInfo h2 {
+        padding-bottom: 2rem; }
+      #footer .contactInfo ul li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.9rem;
+        font-weight: 400;
+        color: #fff; }
+        #footer .contactInfo ul li img {
+          margin-right: 1rem; }
+      #footer .contactInfo .copyright {
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: #fff;
+        opacity: 0.66; }
+    #footer .footerLine {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%); }
+
+  #eventBanner {
+    padding: 17rem 0; }
+    #eventBanner .eventLeft .card {
+      border: 1px solid #D6D6D6;
+      background: transparent;
+      opacity: 1;
+      backdrop-filter: blur(23px);
+      -webkit-backdrop-filter: blur(23px);
+      padding: 1.5rem 3.5rem;
+      border-radius: 2.4rem;
+      -webkit-border-radius: 2.4rem;
+      -moz-border-radius: 2.4rem;
+      -ms-border-radius: 2.4rem;
+      -o-border-radius: 2.4rem; }
+      #eventBanner .eventLeft .card .eventTitle {
+        font-size: 10rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        color: #26F596;
+        text-transform: capitalize;
+        line-height: 1;
+        margin-bottom: 5rem;
+        font-family: 'nirmala-ui-bold', sans-serif; }
+      #eventBanner .eventLeft .card .card-footer {
+        margin-top: 1.75rem;
+        background: transparent;
+        border: none; }
+        #eventBanner .eventLeft .card .card-footer .footerLeft {
+          font-size: 2.3rem;
+          color: #B2B0B0; }
+    #eventBanner .singleDescription {
+      padding-top: 2.5rem; }
+      #eventBanner .singleDescription h3 {
+        font-size: 4rem;
+        font-weight: 700;
+        font-family: 'nirmala-ui-bold', sans-serif;
+        color: #0499F2;
+        padding-bottom: .75rem;
+        font-family: 'nirmala-ui-bold', sans-serif; }
+      #eventBanner .singleDescription p {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: #B2B0B0; }
+    #eventBanner .eventBannerRight {
+      position: relative; }
+      #eventBanner .eventBannerRight .event-icon-4 {
+        position: absolute;
+        right: 0;
+        bottom: 0; }
+
+  .melodicBannerCtrl {
+    position: relative !important; }
+    .melodicBannerCtrl .melodicBanner {
+      position: absolute;
+      width: 110% !important;
+      left: -12%;
+      z-index: -1; }
+
+  #sliderFullCtrl {
+    padding-bottom: 15rem; }
+
+  .footerLineTwo {
+    right: -15% !important; }
+
+  .eventHeader {
+    position: relative; }
+    .eventHeader .event-icon-1 {
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: translate(-50%, -30%);
+      -webkit-transform: translate(-50%, -30%);
+      -moz-transform: translate(-50%, -30%);
+      -ms-transform: translate(-50%, -30%);
+      -o-transform: translate(-50%, -30%); }
+    .eventHeader .event-icon-2 {
+      position: absolute;
+      top: 20rem;
+      left: 1%; }
+
+  #eventBody {
+    position: relative; }
+    #eventBody .event-icon-4 {
+      position: absolute;
+      max-width: 80rem;
+      left: -17%;
+      top: 80rem;
+      z-index: -1; }
+
+  .melodicBody .eventHeader .event-icon-1 {
+    position: absolute;
+    top: 30%;
+    left: 36%; }
+
+  #contactForm {
+    position: relative;
+    padding: 20rem 0;
+    padding-top: 0; }
+    #contactForm .contactFormCtrl {
+      max-width: 50rem; }
+      #contactForm .contactFormCtrl form .singleInput {
+        margin-bottom: 1.7rem; }
+        #contactForm .contactFormCtrl form .singleInput label {
+          color: #0499F2;
+          font-size: 2.25rem;
+          font-weight: 400;
+          padding-bottom: .5rem; }
+        #contactForm .contactFormCtrl form .singleInput input[type="text"], #contactForm .contactFormCtrl form .singleInput input[type="number"], #contactForm .contactFormCtrl form .singleInput input[type="email"], #contactForm .contactFormCtrl form .singleInput textarea, #contactForm .contactFormCtrl form .singleInput select {
+          padding: 1.6rem 3rem;
+          background: transparent;
+          backdrop-filter: blur(23px);
+          box-shadow: 3px 4px 12px #C1C4C230;
+          border: 1px solid #26F596;
+          border-radius: 35px;
+          color: #168F5B;
+          font-size: 2rem; }
+        #contactForm .contactFormCtrl form .singleInput input::placeholder, #contactForm .contactFormCtrl form .singleInput textarea::placeholder {
+          opacity: 0.2; }
+        #contactForm .contactFormCtrl form .singleInput select option:disabled {
+          opacity: 0.2; }
+      #contactForm .contactFormCtrl form .form-check-input {
+        height: 3rem;
+        width: 3rem;
+        margin-right: 1rem; }
+    #contactForm .submitCtrl {
+      margin-top: 5rem; }
+      #contactForm .submitCtrl p {
+        font-size: 2.3rem;
+        color: #B2B0B0;
+        font-weight: 400;
+        margin-bottom: .5rem; }
+    #contactForm .contact-1 {
+      position: absolute;
+      right: 3%;
+      top: 0; }
+    #contactForm .contact-2 {
+      position: absolute;
+      right: 33%;
+      top: -5%; }
+
+  .rtlIconCtrl1 {
+    position: relative;
+    padding: 20rem 0 !important;
+    padding-bottom: 20rem !important;
+    padding-top: 25rem !important; }
+    .rtlIconCtrl1 .icon-11 {
+      position: absolute;
+      left: 27%;
+      top: -2%;
+      width: 10rem;
+      transform: translate(-50%);
+      -webkit-transform: translate(-50%);
+      -moz-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+      -o-transform: translate(-50%); }
+    .rtlIconCtrl1 .icon-22 {
+      position: absolute;
+      left: 15%;
+      bottom: 6%;
+      transform: translate(-50%);
+      -webkit-transform: translate(-50%);
+      -moz-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+      -o-transform: translate(-50%); }
+
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 7px; }
+    #multiCards .multiCardsCtrl .col:first-child .icon-1, #multiCards .multiCardsCtrl .col:last-child .icon-2, #aboutAlghrs .aboutLeft .icon-3, #aboutAlghrs .icon-5, #ourService .row .col:nth-child(2) .icon-7, #ourService .row .col:last-child .icon-9, #achivements .icon-11, #algharsNews .icon-12, #algharsNews .icon-2, #registration .formRight .doubleDash, #achivements .icon-10, #aboutAlghrs .aboutLeft .icon-4, #algharsNews .icon-1, #footer .footerLine, .eventHeader .event-icon-1, .eventHeader .event-icon-2, #contactForm .contact-2, #contactForm .contact-1 {
+      display: none; }
+    .container {
+      overflow: hidden; }
+    #aboutAlghrs {
+      padding: 0; }
+    #multiCards {
+      padding: 13rem 0; }
+    #achivements .achivementTitle {
+      color: #027454;
+      font-size: 7rem; }
+    #algharsNews .algharsTitle {
+      color: #027454;
+      font-size: 7rem; }
+    #registration .registrationTitle {
+      font-size: 7rem; }
+    #registration .formRight .singleItem {
+      margin-bottom: 4rem;
+      margin-top: 3rem; }
+      #registration .formRight .singleItem img {
+        max-width: 30%; }
+    #footer {
+      background: #26F596; }
+    #eventBanner {
+      padding: 5rem 0; }
+    #header .nav-item {
+      margin-left: 0; } }

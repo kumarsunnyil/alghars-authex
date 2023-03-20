@@ -68,7 +68,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
-            Route::get('all/students', 'UsersController@fetchAllStudents')->name('users.students');
+            Route::get('/all/students', 'UsersController@fetchAllStudents')->name('users.students');
+
+            Route::get('/calendar', 'CalendarController@create')->name('calendar.create');
+
+
         });
 
         /**
