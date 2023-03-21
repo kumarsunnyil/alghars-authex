@@ -52,7 +52,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./users/{{ Auth::user()->id }}/show" class="nav-link active">
+                            <a href="/users/{{ Auth::user()->id }}/show" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Profile</p>
                             </a>
@@ -94,7 +94,7 @@
                 {{-- Events --}}
                 <li id="events" class="nav-item  has-treeview">
 
-                    <a href="#" class="nav-link">
+                    <a href="/users/calendar" class="nav-link">
                         <i class="nav-icon fa fa-calendar"></i>
                         <p>
                             Upcoming Events

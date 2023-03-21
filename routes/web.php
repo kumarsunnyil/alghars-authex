@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
-    //Route::get('/send-mail', 'AlgharsMailController@index')->name('email');
     // Route::get('/send-mail', [AlgharsMailController::class, 'index']);
     Route::get('/cleaar-all-cache', function() {
         Artisan::call('cache:clear');
@@ -71,6 +70,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/all/students', 'UsersController@fetchAllStudents')->name('users.students');
 
             Route::get('/calendar', 'CalendarController@create')->name('calendar.create');
+            Route::get('/send-mail', 'AlgharsMailController@create')->name('mail.create');
 
 
         });

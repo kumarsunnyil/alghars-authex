@@ -13,15 +13,17 @@ class AlgharsMailController extends Controller
      *
      * @return response()
      */
-    public function index()
+    public function create()
     {
+
+        //dd('finally');
         $mailData = [
             'title' => 'Mail from The Laravel Application ',
             'body' => 'This is for testing email using smtp from Laravel.'
         ];
 
         Mail::to('kumar.sunnyil@gmail.com')->send(new AlgharsEmail($mailData));
-        return view('email');
-        // dd("Email is sent successfully.");
+         dd("Email is sent successfully.");
+        //  return view('layouts.mail.create');
     }
 }

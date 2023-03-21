@@ -11,10 +11,10 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
 
-        dd('this is a test');
-        return view('layouts.calendar.calendar');
+        // dd('this is a test');
+        return view('layouts.calendar.create');
     }
 }

@@ -45,8 +45,9 @@ class AlgharsEmail extends Mailable
      */
     public function content()
     {
+       // dd('content');
         return new Content(
-            view: 'view.name',
+            view: 'layouts.mail.create',
         );
     }
 
@@ -68,7 +69,9 @@ class AlgharsEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from ItSolutionStuff.com')
-            ->view('emails.demoMail');
+        //  dd('reached here');
+        return $this->subject('Mail from Sunil Sukumaran Kumar')
+        ->view('layouts.mail.create');
+            // ->view('emails.demoMail');
     }
 }
