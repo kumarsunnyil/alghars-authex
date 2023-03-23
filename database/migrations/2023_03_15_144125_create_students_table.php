@@ -23,7 +23,6 @@ return new class extends Migration
 
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->timestamp('email_verified_at')->nullable(); //
             $table->string('password');
             $table->rememberToken();
             $table->string('grade')->nullable();
@@ -32,7 +31,9 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('program_name')->nullable();
             $table->string('message')->nullable();
-            $table->string('is_active')->nullable(); // TODO once the email is verified the user becomes active
+            $table->boolean('is_active')->default(0);// TODO once the email is verified the user becomes active
+            $table->timestamp('email_verified_at')->nullable(); //
+            $table->boolean('is_email_verified')->default(0); //
             $table->timestamps();
         });
     }

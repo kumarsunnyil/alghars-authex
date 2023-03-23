@@ -31,7 +31,8 @@ class StudentUser extends Authenticatable
         'email',
         'username',
         'password',
-        'is_email_verified'
+        'is_email_verified',
+        'email_verified_at'
     ];
 
     /**

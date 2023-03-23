@@ -37,12 +37,18 @@
     <!-- Custom styles for this template -->
     {{-- <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet"> --}}
 
-    <link rel="stylesheet" href="{!! url('assets/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"') !!}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="{!! url('assets/plugins/fontawesome-free/css/all.min.css') !!}">
+
+        <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{!! url('assets/plugins/jquery-ui/jquery-ui.min.js ') !!}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{!! url('assets/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') !!}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{!! url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') !!}">
     <!-- iCheck -->
@@ -61,7 +67,7 @@
 
 </head>
 
-<body class=" @guest sidebar-collapse @endguest
+<body class=" @guest sidebar-collapse @endguest hold-transition sidebar-mini layout-fixed
 ">
     @guest
         @include('layouts.partials.anonymousnavbar')
@@ -86,10 +92,7 @@
     @show
 
     {{-- ADMIN LTE  --}}
-    <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{!! url('assets/plugins/jquery-ui/jquery-ui.min.js ') !!}"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>

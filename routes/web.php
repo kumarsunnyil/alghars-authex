@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-
-    // Route::get('/send-mail', [AlgharsMailController::class, 'index']);
-    Route::get('/cleaar-all-cache', function() {
-        Artisan::call('cache:clear');
-        Artisan::call('route:cache');
-        Artisan::call('view:clear');
-        Artisan::call('config:cache');
-        return '<h3>All Cache has been cleared: - Cache, Route, View, Config</h3>';
+    //Route::get('/clear', [ClearCacheController::class, 'index']);
+    Route::get('/clear', 'ClearCacheController@index')->name('home.index');
+    Route::get('/clear-all-cache', function() {
+        // Artisan::call('cache:clear');
+        // Artisan::call('route:cache');
+        // Artisan::call('view:clear');
+        // Artisan::call('config:cache');
+        // return '<h3>All Cache has been cleared: - Cache, Route, View, Config</h3>';
     });
 
     /**
@@ -36,6 +36,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/register', 'RegisterController@show')->name('register.show');
         Route::post('/register', 'RegisterController@register')->name('register.perform');
         Route::get('/registered   ', 'RegisterController@registered')->name('register.show');
+        Route::get('/account/verify/{token}', 'RegisterController@verifyStudentAccount')->name('register.verify');
 
         /**
          * Register a  student
@@ -67,11 +68,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
-            Route::get('/all/students', 'UsersController@fetchAllStudents')->name('users.students');
 
             Route::get('/calendar', 'CalendarController@create')->name('calendar.create');
             Route::get('/send-mail', 'AlgharsMailController@create')->name('mail.create');
-
+            Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
+            // display all students
+            Route::get('/{user}/all/students', 'StudentController@fetchAllStudents')->name('users.students');
 
         });
 

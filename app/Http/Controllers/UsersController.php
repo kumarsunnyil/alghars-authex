@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\StudentUser;
+
 
 class UsersController extends Controller
 {
@@ -115,15 +115,5 @@ class UsersController extends Controller
             ->withSuccess(__('User deleted successfully.'));
     }
 
-    /**
-     * display and display all students
-     */
-    public function fetchAllStudents() {
 
-
-        dd('Here ');
-        $students = StudentUser::latest()->paginate(10);
-
-        return view('users.index', compact('users'));
-    }
 }

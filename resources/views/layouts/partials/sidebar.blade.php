@@ -82,8 +82,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-
+                            <a href="/users/{{ Auth::user()->id }}/all/students" class="nav-link">
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                 <p>Student</p>
                             </a>

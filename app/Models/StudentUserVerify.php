@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class StudentVerification extends Model
+
+
+class StudentUserVerify extends Model
 {
     use HasFactory;
 
-    public $table = "users_verify";
+    public $table = "student_user_verify";
 
     /**
      * Write code on Method
@@ -18,7 +20,7 @@ class StudentVerification extends Model
      * @return response()
      */
     protected $fillable = [
-        'user_id',
+        'student_user_id',
         'token',
     ];
 
@@ -29,6 +31,6 @@ class StudentVerification extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(StudentUser::class);
     }
 }

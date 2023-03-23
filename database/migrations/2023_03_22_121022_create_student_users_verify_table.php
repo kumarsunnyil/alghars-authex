@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_verifcation', function (Blueprint $table) {
+        Schema::create('student_user_verify', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('student_users_id');
+            $table->integer('student_user_id')->nullable();
             $table->string('token');
             $table->timestamps();
         });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_email_verified')->default(0);
-        });
+        // Already provided in the student table
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->boolean('is_email_verified')->default(0);
+        // });
     }
 
     /**
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_verifcation');
+        Schema::dropIfExists('student_user_verify');
     }
 };
