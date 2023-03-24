@@ -11,7 +11,17 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Registered Student with details</h3>
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1 class="card-title">Registered Student with details</h1>
+                                </div>
+                                <div class="col-sm-6">
+                                  <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item active">Students</li>
+                                  </ol>
+                                </div>
+                              </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

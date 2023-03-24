@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class CreateScreenUserSeeder extends Seeder
+class CreateTeacherUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,13 +17,13 @@ class CreateScreenUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Screen Teacher',
-            'email' => 'screenteacher@gmail.com',
-            'username' => 'screen user',
+            'name' => 'Teacher',
+            'email' => 'teacher@gmail.com',
+            'username' => 'teacher user',
             'password' => 'admin123'
         ]);
 
-        $role = Role::create(['name' => 'screenuser']);
+        $role = Role::create(['name' => 'teacher']);
 
         $permissions = Permission::pluck('id','id')->all();
 
