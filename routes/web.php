@@ -74,6 +74,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
             // display all students
             Route::get('/{user}/all/students', 'StudentController@fetchAllStudents')->name('users.students');
+            Route::get('/manage/screenusers', 'StudentController@fetchAllStudents')->name('users.screenuser');
 
         });
 

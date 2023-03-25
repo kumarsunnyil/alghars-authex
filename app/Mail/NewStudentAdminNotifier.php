@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AlgharsEmail extends Mailable
+class NewStudentAdminNotifier extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +34,7 @@ class AlgharsEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Alghars Email',
+            subject: 'New Student Registered',
         );
     }
 
@@ -47,7 +47,7 @@ class AlgharsEmail extends Mailable
     {
        // dd('content');
         return new Content(
-            view: 'layouts.mail.create',
+            view: 'layouts.mail.notify',
         );
     }
 
@@ -71,7 +71,7 @@ class AlgharsEmail extends Mailable
     {
         //  dd('reached here');
         return $this->subject($this->mailData['subject'])
-        ->view('layouts.mail.create');
+        ->view('layouts.mail.notify');
             // ->view('emails.demoMail');
     }
 }

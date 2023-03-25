@@ -69,6 +69,14 @@
 
     <script>
  $(function () {
+    //Initialize Select2 Elements
+//     $('.select2').select2()
+
+//     //Initialize Select2 Elements
+//     $('.select2bs4').select2({
+//       theme: 'bootstrap4'
+//     })
+// ;
 
     //Date and time picker
     $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
@@ -83,13 +91,7 @@
         format: 'MM/DD/YYYY hh:mm A'
       }
     })
-    //Date range as a button
 
-
-    //Timepicker
-    // $('#timepicker').datetimepicker({
-    //   format: 'LT'
-    // })
   })
 
 
