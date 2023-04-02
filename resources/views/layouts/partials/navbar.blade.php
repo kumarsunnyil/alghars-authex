@@ -39,10 +39,9 @@
 
 <!-- Navbar -->
 
-<nav class="main-header navbar navbar-expand navbar-white navbar-light
 
 
-">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -50,6 +49,13 @@
         </li>
 
         <li><a href="{{ route('home.index') }}" class="nav-link px-2">Home</a></li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">About</a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Register</a>
+        </li>
         @auth
             @role('admin')
                 <li><a href="{{ route('users.index') }}" class="nav-link px-2">Users</a></li>
@@ -195,11 +201,9 @@
             <a href="{{ route('logout.perform') }}" class="btn btn-outline-dark me-2">Logout</a>
         </div>
     @endauth
-    @guest
-        <div class="text-end">
-            <a href="{{ route('login.perform') }}" class="btn btn-outline-dark me-2">Login</a>
-            <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a>
-        </div>
-    @endguest
 </nav>
+
+{{-- @endif --}}
+
+
 <!-- /.navbar -->

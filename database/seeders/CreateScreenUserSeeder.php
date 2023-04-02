@@ -17,7 +17,7 @@ class CreateScreenUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Screen Teacher',
+            'name' => 'ScreenTeacher',
             'email' => 'screenteacher@gmail.com',
             'username' => 'screen user',
             'password' => 'admin123'

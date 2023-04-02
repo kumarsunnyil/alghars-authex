@@ -17,18 +17,16 @@ class CreateTeacherUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Teacher',
-            'email' => 'teacher@gmail.com',
-            'username' => 'teacher user',
+            'name' => 'Teacher3',
+            'email' => 'teacher3@gmail.com',
+            'username' => 'teacheruser3',
             'password' => 'admin123'
         ]);
 
+        // $user->assignRole('teacher');
         $role = Role::create(['name' => 'teacher']);
-
         $permissions = Permission::pluck('id','id')->all();
-
         $role->syncPermissions($permissions);
-
         $user->assignRole([$role->id]);
     }
 }

@@ -52,7 +52,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/users/{{ Auth::user()->id }}/show" class="nav-link active">
+                            <a href="/admin/{{ Auth::user()->id }}/show" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Profile</p>
                             </a>
@@ -68,32 +68,108 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                {{-- <i class="far fa-person-chalkboard nav-icon"></i> --}}
-                                <i class="fa fa-users" aria-hidden="true" style="color:#268bd3"></i>
-                                <p>Screen User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>Teacher</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/users/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <p>Student</p>
-                            </a>
-                        </li>
+                        @role('admin')
+                            <li class="nav-item">
+                                <a href="/admin/assign/screenuser/students" class="nav-link">
+                                    {{-- <i class="far fa-person-chalkboard nav-icon"></i> --}}
+                                    <i class="fa fa-users" aria-hidden="true" style="color:#268bd3"></i>
+                                    <p>Assign to ScreenUser</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./index2.html" class="nav-link">
+                                    <i class="far fa-user nav-icon"></i>
+                                    <p>Teacher</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Student</p>
+                                </a>
+                            </li>
+                        @endrole
+                        @role('screenuser')
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Students</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Reports</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/student/evaluate/list" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Evaluation</p>
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('teacher')
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>View Schedule</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Manage Student</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Progress Report</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Feedback</p>
+                                </a>
+                            </li>
+                        @endrole
+                        @role('student')
+                            <li class="nav-item">
+                                <a href="/student/{{ Auth::user()->id }}/show" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Profile {{auth()->id()}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/student/{{ Auth::user()->id }}/calendar" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Accept Evaluation</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Progress Report</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <p>Classes</p>
+                                </a>
+                            </li>
+                        @endrole
+
                     </ul>
                 </li>
 
                 {{-- Events --}}
                 <li id="events" class="nav-item  has-treeview">
 
-                    <a href="/users/calendar" class="nav-link">
+                    <a href="/admin/calendar" class="nav-link">
                         <i class="nav-icon fa fa-calendar"></i>
                         <p>
                             Upcoming Events

@@ -32,9 +32,13 @@ return new class extends Migration
             $table->string('program_name')->nullable();
             $table->string('message')->nullable();
             $table->boolean('is_active')->default(0);// TODO once the email is verified the user becomes active
+            $table->boolean('is_evaluated')->default(0);// TODO once the email is verified the user becomes active
+            $table->unsignedBigInteger('evaluator_user_id')->default(1); // admin
             $table->timestamp('email_verified_at')->nullable(); //
             $table->boolean('is_email_verified')->default(0); //
             $table->timestamps();
+
+            $table->foreign('evaluator_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

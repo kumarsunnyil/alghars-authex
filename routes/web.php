@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     //Route::get('/clear', [ClearCacheController::class, 'index']);
     Route::get('/clear', 'ClearCacheController@index')->name('home.index');
-    Route::get('/clear-all-cache', function() {
+    Route::get('/clear-all-cache', function () {
         // Artisan::call('cache:clear');
         // Artisan::call('route:cache');
         // Artisan::call('view:clear');
@@ -28,6 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/about', 'StaticController@index')->name('about.index');
 
     Route::group(['middleware' => ['guest']], function () {
         /**
@@ -60,7 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * User Routes
          */
-        Route::group(['prefix' => 'users'], function () {
+        Route::group(['prefix' => '/admin'], function () {
             Route::get('/', 'UsersController@index')->name('users.index');
             Route::get('/create', 'UsersController@create')->name('users.create');
             Route::post('/create', 'UsersController@store')->name('users.store');
@@ -69,18 +70,39 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
 
-            Route::get('/calendar', 'CalendarController@create')->name('calendar.create');
             Route::get('/send-mail', 'AlgharsMailController@create')->name('mail.create');
             Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
+
             // display all students
             Route::get('/{user}/all/students', 'StudentController@fetchAllStudents')->name('users.students');
-            Route::get('/manage/screenusers', 'StudentController@fetchAllStudents')->name('users.screenuser');
 
+            //Screenusers
+            Route::get('/assign/screenuser/students', 'ScreenuserController@fetchScreenusers')->name('users.screenuser');
+            Route::get('/assign/evaluator', 'ScreenuserController@assignEvaluator')->name('users.evaluator');
+            Route::post('/assign/to/evaluator', 'ScreenuserController@assignEvaluatorStore')->name('users.evaluator');
+            Route::get('/student/evaluate/list', 'ScreenuserController@fetchStudentInEvaluation')->name('users.evaluatestudent');
+            Route::get('/evaluating/students', 'ScreenuserController@fetchStudentDetail')->name('users.evaluatestudent');
+
+           Route::get('/{user}/studentdetails/{student}', 'ScreenuserController@fetchStudentInfo')->name('users.studentinfo');
+           Route::get('/{user}/student/evaluate/{student}', 'ScreenuserController@form')->name('users.studentinfo');
+
+            //Teacher
+            Route::post('/create/report', 'TeacherController@create')->name('teacher.index');
         });
 
+        //Student Routes to be moved here later
         /**
          * User Routes
          */
+
+        Route::group(['prefix' => 'student'], function () {
+            Route::get('/', 'UsersController@index')->name('users.index');
+            Route::get('/{user}/show', 'UsersController@show')->name('users.show');
+            Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
+            Route::get('/{user}/calendar', 'CalendarController@create')->name('calendar.create');
+            Route::post('/{user}/date-confirm', 'CalendarController@confirmEvaluatorStore')->name('calendar.confirm');
+            // Route::get('/{user}/evaluationInfo', 'CalendarController@getEvalInfo')->name('calendar.create');
+        });
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'PostsController@index')->name('posts.index');
             Route::get('/create', 'PostsController@create')->name('posts.create');
@@ -91,9 +113,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::delete('/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
         });
 
-        Route::resource('roles', RolesController::class);
-        Route::resource('permissions', PermissionsController::class);
+        Route::resource('/admin/roles', RolesController::class);
+        Route::resource('/admin/permissions', PermissionsController::class);
     });
-
-
 });
