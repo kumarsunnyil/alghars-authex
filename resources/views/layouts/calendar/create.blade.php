@@ -49,11 +49,10 @@
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
-                                    <input type="text" value="" id="timeVal" name="timeVal" />
                                 </div>
+                                {{-- {{auth()->user()->name}}&nbsp; {{auth()->user()->id}}&nbsp; --}}
+                                <button type="submit" class="btn btn-primary"  id="confrmEval">Confirm Evaluation</button>
                             </div>
-                            {{auth()->user()->name}}&nbsp; {{auth()->user()->id}}&nbsp;
-                            <button type="submit" class="btn btn-primary"  id="confrmEval">Confirm Evaluation</button>
                             {{-- <a class="w-100 btn btn-lg btn-info" href="{{ url('/student') }}/date-confirm" class="btn btn-warning">Sign-up</a> --}}
                         </form>
 
@@ -94,24 +93,7 @@
                 });
 
 
-                /*
-                                //Date range picker
-                                $('#reservation').daterangepicker()
-                                //Date range picker with time picker
-                                $('#reservationtime').daterangepicker({
-                                    timePicker: true,
-                                    timePickerIncrement: 30,
-                                    locale: {
-                                        format: 'MM/DD/YYYY hh:mm A'
-                                    }
-                                })*/
-                //Date range as a button
 
-
-                //Timepicker
-                // $('#timepicker').datetimepicker({
-                //   format: 'LT'
-                // })
             })
         </script>
     @endrole

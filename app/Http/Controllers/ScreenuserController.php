@@ -50,7 +50,7 @@ class ScreenuserController extends Controller
         $screenUser = User::where('email', $request->screenuser)->first();
         foreach (explode(',', $request->studentThrottle) as $studentEmail) {
             //$studentUser = StudentUser::where('email', $studentEmail)->first();
-            $studentUser = User::where('email', $studentEmail)->first();
+            $studentUser = StudentUser::where('email', $studentEmail)->first();
             $evaluation = StudentEvaluation::create(
                 [
                     'user_id' => $screenUser->id,
@@ -69,10 +69,9 @@ class ScreenuserController extends Controller
 
         $screenUserId =  Auth::user()->id;
         $evaluation = StudentEvaluation::where('user_id', $screenUserId)->get();
-
+        // dd($evaluation);
         foreach ($evaluation as $evaluating) {
-            $currentStudent = StudentUser::find($evaluating->id);
-            // $studentDetails =
+            $currentStudent = StudentUser::find($evaluating->student_user_id);
             $students[] = [
 
                 'id' => $currentStudent->id,
@@ -103,6 +102,44 @@ class ScreenuserController extends Controller
             'student' => $student
         ]);
     }
+    /**
+     * Submit form
+     * @param Request $request
+     *
+     * @return [type]
+     */
+    public function evaluationSubmission(Request $request)
+    {
 
-    
+        $params = explode("/", $request->path());
+
+        $studentId = $params[4]; // from the URI params
+        $student = StudentUser::find($studentId);
+
+        return view('users.evaluateForm', [
+            'student'  => $student
+        ]);
+    }
+    /**
+     * Subit the Evaluation report
+     * @param Request $request
+     *
+     * @return [type]
+     */
+    public function submitEvaluation(Request $request) {
+
+
+        // dd($request->email);
+        $student = StudentUser::where ('email', $request->email)->first();
+        // dd($student);
+        $evaluationObj = StudentEvaluation :: where ('student_user_id', $student->id)->first();
+// dd($evaluationObj);
+
+        $evaluationObj->comment = $request->comment;
+        $evaluationObj->save();
+        return redirect('/admin/')->with('success', "Student Report Submitted.");
+
+
+
+    }
 }

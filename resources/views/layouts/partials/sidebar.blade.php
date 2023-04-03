@@ -194,6 +194,15 @@
                         </p>
                     </a>
                 </li>
+                <li id="events" class="nav-item  has-treeview">
+
+                    <a href="/admin/create" class="nav-link">
+                        <i class="nav-icon fa fa-flag"></i>
+                        <p>
+                            Add New Users
+                        </p>
+                    </a>
+                </li>
 
 
 

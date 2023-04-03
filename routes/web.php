@@ -62,7 +62,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * User Routes
          */
         Route::group(['prefix' => '/admin'], function () {
-            Route::get('/', 'UsersController@index')->name('users.index');
+            Route::get('/users', 'UsersController@index')->name('users.index');
             Route::get('/create', 'UsersController@create')->name('users.create');
             Route::post('/create', 'UsersController@store')->name('users.store');
             Route::get('/{user}/show', 'UsersController@show')->name('users.show');
@@ -84,7 +84,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/evaluating/students', 'ScreenuserController@fetchStudentDetail')->name('users.evaluatestudent');
 
            Route::get('/{user}/studentdetails/{student}', 'ScreenuserController@fetchStudentInfo')->name('users.studentinfo');
-           Route::get('/{user}/student/evaluate/{student}', 'ScreenuserController@form')->name('users.studentinfo');
+           Route::get('/{user}/student/evaluate/{student}', 'ScreenuserController@evaluationSubmission')->name('users.studentinfo');
+           Route::post('/{user}/evaluation/submit/{student}', 'ScreenuserController@submitEvaluation')->name('users.studentinfo');
 
             //Teacher
             Route::post('/create/report', 'TeacherController@create')->name('teacher.index');

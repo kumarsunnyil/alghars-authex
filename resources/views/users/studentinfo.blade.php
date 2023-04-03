@@ -31,7 +31,7 @@
                                     <td>
                                         <b>{{ $student['name'] }}</b>
                                         <span>
-                                            <a href="/admin/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
+                                            <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
                                         </span>
 
                                     </td>
