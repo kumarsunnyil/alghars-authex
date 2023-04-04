@@ -68,21 +68,29 @@ class ScreenuserController extends Controller
     {
 
         $screenUserId =  Auth::user()->id;
-        $evaluation = StudentEvaluation::where('user_id', $screenUserId)->get();
+        $evaluation = StudentEvaluation::where('user_id', $screenUserId)
+        ->get();
         // dd($evaluation);
+        $students = array();
         foreach ($evaluation as $evaluating) {
             $currentStudent = StudentUser::find($evaluating->student_user_id);
-            $students[] = [
+            if($currentStudent->is_evaluated == 0) {
 
-                'id' => $currentStudent->id,
-                'screenUserId' => $screenUserId,
-                'name' => $currentStudent->name,
-                'parent_name' => $currentStudent->p_name,
-                'program_name' => $currentStudent->program_name,
-                'location' => $currentStudent->location,
-                'grade' => $currentStudent->grade,
-            ];
+
+                $students[] = [
+
+                    'id' => $currentStudent->id,
+                    'screenUserId' => $screenUserId,
+                    'name' => $currentStudent->name,
+                    'parent_name' => $currentStudent->p_name,
+                    'program_name' => $currentStudent->program_name,
+                    'location' => $currentStudent->location,
+                    'grade' => $currentStudent->grade,
+                ];
+            }
+
         }
+
 
         return view('users.evaluatestudent', [
             'students' =>  $students
@@ -131,13 +139,14 @@ class ScreenuserController extends Controller
 
         // dd($request->email);
         $student = StudentUser::where ('email', $request->email)->first();
-        // dd($student);
         $evaluationObj = StudentEvaluation :: where ('student_user_id', $student->id)->first();
-// dd($evaluationObj);
 
         $evaluationObj->comment = $request->comment;
-        $evaluationObj->save();
-        return redirect('/admin/')->with('success', "Student Report Submitted.");
+        if($evaluationObj->save()) {
+            $student->is_evaluated = 1;
+            $student->save();
+        }
+        return redirect('/admin/users')->with('success', "Student Report Submitted.");
 
 
 

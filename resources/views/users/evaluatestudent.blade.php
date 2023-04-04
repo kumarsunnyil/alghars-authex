@@ -39,6 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($students as $key => $student)
                                         {{-- {{ dd($students[$key])}} --}}
                                         <tr>
@@ -54,6 +55,7 @@
                                         </tr>
                                     @endforeach
 
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -68,7 +70,14 @@
                             </table>
                             @else
                             <div>
-                                <h1> There are no Records for now</h1>
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <tr>
+                                        <td>
+
+                                            <h1> There are no more students for evaluation</h1>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                             @endif
                         </div>

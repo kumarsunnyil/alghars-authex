@@ -1,9 +1,10 @@
 @extends('layouts.app-master')
 
 @section('content')
-
-    <h1 class="mb-3">Alghars roles and Permissions </h1>
-
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
     <div class="bg-light p-4 rounded">
         <h2>Permissions</h2>
         <div class="lead">
@@ -40,4 +41,9 @@
         </table>
 
     </div>
-@endsection
+
+        </div>
+        <!-- Content Header (Page header) -->
+    </section>
+</div>
+    @endsection

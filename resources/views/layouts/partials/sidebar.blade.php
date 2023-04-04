@@ -77,9 +77,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="/admin/users/manage-classes" class="nav-link">
                                     <i class="far fa-user nav-icon"></i>
-                                    <p>Teacher</p>
+                                    <p>Manage Classes</p>
                                 </a>
                             </li>
                             <li class="nav-item">

@@ -58,7 +58,7 @@
         </li>
         @auth
             @role('admin')
-                <li><a href="admin/{{ route('users.index') }}" class="nav-link px-2">Users</a></li>
+                <li><a href="{{ url('/') }}/admin/users" class="nav-link px-2">Users</a></li>
                 {{-- <li><a href="{{ route('roles.index') }}" class="nav-link px-2">Roles</a></li> --}}
             @endrole
             {{-- @role('Admin')

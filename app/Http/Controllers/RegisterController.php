@@ -41,7 +41,7 @@ class RegisterController extends Controller
         // setting up registration as a transaction
         DB::transaction(function() use ($request)
         {
-            $request->password = "test123password"; // to be deleted
+            // $request->password = "test123password"; // to be deleted
             $user = User::create(
                 [
                     'name' => $request->name,
@@ -79,7 +79,8 @@ class RegisterController extends Controller
 
                 $title = 'New User Registration';
                 $subject = 'Email Verification from Alghars ';
-                $to =  'kumar.sunnyil@gmail.com'; // $request->email;
+                //$to =  'kumar.sunnyil@gmail.com'; // $request->email;
+                $to =  $request->email;
                 $message = 'Thank you for registration';
                 /**
                  * Generating the token during registration
