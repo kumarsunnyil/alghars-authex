@@ -112,7 +112,7 @@
 
                         @role('teacher')
                             <li class="nav-item">
-                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
+                                <a href="/admin/fetch/classes" class="nav-link">
                                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                     <p>View Schedule</p>
                                 </a>

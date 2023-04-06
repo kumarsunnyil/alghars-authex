@@ -28,7 +28,7 @@ class CreateStudentUserSeeder extends Seeder
                     'name' => $student->name,
                     'email' => $student->email,
                     'username' => $student->username,
-                    'password' => "test123password",
+                    'password' => "admin123",
                     ]
                 );
                 if($count == 0)

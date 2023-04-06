@@ -39,15 +39,16 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         // setting up registration as a transaction
-        DB::transaction(function() use ($request)
-        {
-            // $request->password = "test123password"; // to be deleted
-            $user = User::create(
-                [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'username' => $request->username,
-                    'password' => $request->password,
+        DB::transaction(
+            function () use ($request) {
+                // $request->password = "test123password"; // to be deleted
+                $password = $this->generatePassword(16);
+                $user = User::create(
+                    [
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'username' => $request->username,
+                        'password' => $password,
                     ]
 
                 );
@@ -60,10 +61,7 @@ class RegisterController extends Controller
                         'email' => $request->email,
                         'username' => $request->username,
                         'grade' => $request->grade,
-                        //'password' => $request->password,
-                        'password' =>$request->password, // TODO temporary stub to be later removed
-//                        'user_id' => $user->id, //Referencing the user table
-
+                        'password' => $password,
                         'p_name' => $request->p_name,
                         'phone' => $request->phone,
                         'location' => $request->location,
@@ -73,15 +71,19 @@ class RegisterController extends Controller
                 );
 
                 $this->createStudentRole($user);
-
                 $token = Str::random(64);
 
 
                 $title = 'New User Registration';
-                $subject = 'Email Verification from Alghars ';
+                $subject = 'Student Registration and from Alghars ';
                 //$to =  'kumar.sunnyil@gmail.com'; // $request->email;
                 $to =  $request->email;
-                $message = 'Thank you for registration';
+                $message = '
+
+
+
+
+                        ';
                 /**
                  * Generating the token during registration
                  */
@@ -92,25 +94,19 @@ class RegisterController extends Controller
 
 
                 $mailData = [
-                    'title'=> $title,
-                    'subject'=> $subject,
-                    'to'=> $to,
-                    'message'=>$message,
-                    'token'=>$token,
+                    'title' => $title,
+                    'subject' => $subject,
+                    'to' => $to,
+                    'message' => $message,
+                    'token' => $token,
+                    'username'=> $request->username,
+                    'password'=> $password,
                 ];
                 event(new StudentRegistered($mailData));
 
-                return redirect('/registered')->with('success', "Account successfully registered.");
-
-        }
-    );
-
-
-
-
-
-
-
+            }
+        );
+        return redirect('/registered')->with('success', "Account successfully registered.");
     }
     /**
      *
@@ -126,6 +122,9 @@ class RegisterController extends Controller
      * this is the method that verifies the registered user is a verified user.
      * @doc - https://www.itsolutionstuff.com/post/laravel-9-custom-email-verification-tutorialexample.html
      * @return response()
+     * @param mixed $token
+     *
+     * @return [type]
      */
     public function verifyStudentAccount($token)
     {
@@ -133,7 +132,7 @@ class RegisterController extends Controller
 
         $message = 'Sorry your email cannot be identified.';
 
-        dd($verifyUser);
+
         if (!is_null($verifyUser)) {
             $user = $verifyUser->user;
             dd($user);
@@ -157,5 +156,19 @@ class RegisterController extends Controller
         // $role->syncPermissions($permissions);
         // $user->assignRole([$role->id]);
         $user->assignRole([4]);
+    }
+
+    function generatePassword($length = 24)
+    {
+        $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' .
+            '0123456789@#$';
+
+        $str = '';
+        $max = strlen($chars) - 1;
+
+        for ($i = 0; $i < $length; $i++)
+            $str .= $chars[random_int(0, $max)];
+
+        return $str;
     }
 }

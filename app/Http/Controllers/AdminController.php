@@ -17,22 +17,22 @@ class AdminController extends Controller
     {
 
 
-        $teacher = $users = User::role('teacher')->get();
+        $teacher = User::role('teacher')->get();
         $students = StudentUser::where('is_evaluated', 1)
             // ->where('evaluator_user_id', 1)
             ->get();
         $courses = Course::where('user_id', 3) // Hardcoded now //TODO need to remove the hardcoe
-        ->get();
-            $data = [
-                'teacher' => $teacher,
-                'students' => $students,
-                'courses' => $courses,
-            ];
+            ->get();
+        $data = [
+            'teacher' => $teacher,
+            'students' => $students,
+            'courses' => $courses,
+        ];
 
-            // dd($data);
-            return view('users.classes', [
-                'data' => $data
-            ]);
+        // dd($data);
+        return view('users.classes', [
+            'data' => $data
+        ]);
     }
 
 
@@ -42,34 +42,53 @@ class AdminController extends Controller
      * @return [type]
      * Create Classes for the specified teacher and student
      */
-    public function manageStore(Request $request) {
+    public function manageStore(Request $request)
+    {
 
-        //  dd($request);
-         $studentEmail = $request->student;
+
+
+
+
+        $studentEmail = $request->student;
 
         $teacherEmail = $request->teacher;
         $selectDays = $request->daysOfWeek;
         $CourseName = $request->course_name;
 
+
+
+
         $teacherObj = User::where('email', $teacherEmail)->first();
         $studentObj = StudentUser::where('email', $studentEmail)->first();
 
         // dd($studentObj);
-        $coursesObj = Course::where ('program_name', $CourseName)->get();
+        $coursesObj = Course::where('program_name', $CourseName)->get();
 
-        foreach($coursesObj as $course) {
+        foreach ($coursesObj as $course) {
 
-            $class = Classes:: create([
+            $classesObj = Classes::where('student_user_id', $studentObj->id)
+                ->where('course_id', $course->id)
+                ->get();
+                if (empty($classesObj[0])) {
 
-                'student_user_id'=> $studentObj->id,
-                'course_id'=> $course->id,
-                'days_of_week'=> $course->id,
-                'description'=> '',
-                'start_date'=> now(),
-                'end_date'=> now(),
-                ]
-            );
+                    $class = Classes::create(
+                        [
 
+                            'student_user_id' => $studentObj->id,
+                            'course_id' => $course->id,
+                            'days_of_week' => $selectDays,
+                            'description' => '',
+                            'start_date' => now(),
+                            'end_date' => now(),
+                            ]
+                        );
+                    } else {
+                $classID = $classesObj[0]['id'];
+                $classesObject = Classes::find($classID);
+                                 //->where('student_user_id', $studentObj->id);
+                $classesObject->days_of_week = $selectDays;
+                $classesObject->save();
+            }
         }
 
         return redirect('/admin/users/manage-classes/')->with('success', "Classes Created");

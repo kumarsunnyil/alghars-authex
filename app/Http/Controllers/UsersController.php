@@ -17,6 +17,8 @@ class UsersController extends Controller
      */
     public function index()
     {
+
+
         $users = User::latest()->paginate(10);
 
         return view('users.index', compact('users'));
@@ -114,6 +116,11 @@ class UsersController extends Controller
         return redirect()->route('users.index')
             ->withSuccess(__('User deleted successfully.'));
     }
+    public function teacherIndex()
+    {
+        $users = User::latest()->paginate(10);
 
+        return view('users.index', compact('users'));
+    }
 
 }

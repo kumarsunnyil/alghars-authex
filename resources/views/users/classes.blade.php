@@ -52,7 +52,7 @@
                                             data-dropdown-css-class="select2-danger" data-placeholder="Select Course"
                                             data-dropdown-css-class="select2-purple" style="width: 100%;"
                                             name="courseSelect" id="courseSelect">
-                                            <option value="Sunday">Select Course</option>
+                                            <option value="Select Course">Select Course</option>
                                             @foreach ($data['courses'] as $key => $course)
                                                 {{ $course['program_name'] }}
                                                 <option value="{{ $course['program_name'] }}">{{ $course['program_name'] }}
@@ -77,7 +77,7 @@
                                             <option value="Monday">Monday</option>
                                             <option value="Tuesday">Tuesday</option>
                                             <option value="Wednesday">Wednesday</option>
-                                            <option value="Thrusday">Thursday</option>
+                                            <option value="Thursday">Thursday</option>
                                             <option value="Friday">Friday</option>
                                             <option value="Saturday">Saturday</option>
                                         </select>

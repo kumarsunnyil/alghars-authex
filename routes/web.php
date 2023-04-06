@@ -70,6 +70,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
 
+
+/**
+ * Profile image code below.
+ * https://www.itsolutionstuff.com/post/laravel-profile-image-upload-tutorial-with-exampleexample.html
+ */
+//  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('user.profile');
+// Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('user.profile.store');
+
+/** Profile image Code Above */
+
+
             Route::get('/send-mail', 'AlgharsMailController@create')->name('mail.create');
             Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
 
@@ -92,9 +104,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
            Route::post('/users/manage-classes', 'AdminController@manageStore')->name('users.classes');
         //    Route::get('/users', 'UsersController@index')->name('users.index');
 
-
             //Teacher
             Route::post('/create/report', 'TeacherController@create')->name('teacher.index');
+            Route::get('/fetch/classes', 'TeacherController@fetchAllClasses')->name('teacher.classes');
         });
 
         //Student Routes to be moved here later
@@ -103,8 +115,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
 
         Route::group(['prefix' => 'student'], function () {
-            Route::get('/', 'UsersController@index')->name('users.index');
-            Route::get('/{user}/show', 'UsersController@show')->name('users.show');
+          //  Route::get('/', 'UsersController@index')->name('users.index');
+          //  Route::get('/{user}/show', 'UsersController@show')->name('users.show');
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::get('/{user}/calendar', 'CalendarController@create')->name('calendar.create');
             Route::post('/{user}/date-confirm', 'CalendarController@confirmEvaluatorStore')->name('calendar.confirm');
