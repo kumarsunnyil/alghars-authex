@@ -18,8 +18,8 @@ More to come here
         @endauth
 
         @guest
-            <h1>Homepage</h1>
-            <p class="lead">Your viewing the home page. Please login to view the restricted data.</p>
+
+        @include('home.anonymousindex')
         @endguest
     </div>
 @endsection

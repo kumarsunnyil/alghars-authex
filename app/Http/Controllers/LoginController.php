@@ -58,6 +58,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
+
+        // dd('Here');
+        if (
+            auth()->user()->hasRole('admin') ||
+            auth()->user()->hasRole('screenuser') ||
+            auth()->user()->hasRole('teacher')
+        )
+        redirect()->setIntendedUrl(url('/admin/users'));
+
         return redirect()->intended();
     }
 }

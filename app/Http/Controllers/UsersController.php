@@ -18,6 +18,7 @@ class UsersController extends Controller
     public function index()
     {
 
+        // if (auth()->user()->hasRole('student'))
 
         $users = User::latest()->paginate(10);
 
@@ -116,6 +117,9 @@ class UsersController extends Controller
         return redirect()->route('users.index')
             ->withSuccess(__('User deleted successfully.'));
     }
+    /**
+     * @return [type]
+     */
     public function teacherIndex()
     {
         $users = User::latest()->paginate(10);

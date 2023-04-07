@@ -35,7 +35,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Date picker</h3>
                         </div>
-                        <form method="post" action="{{ url('/student') }}/23/date-confirm/">
+                        <form method="post" action="{{ url('/student') }}/{{ Auth::user()->id }}/date-confirm/">
                             @csrf
                             <div class="card-body">
                                 <!-- Date and time -->
@@ -44,6 +44,9 @@
                                     <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
                                         <input name="confirmDateAndtime"  type="text" class="form-control datetimepicker-input"
                                             data-target="#reservationdatetime" />
+                                        <input type= "hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}"  type="text" class="form-control datetimepicker-input"
+                                            data-target="#reservationdatetime" />
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="input-group-append" data-target="#reservationdatetime"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>

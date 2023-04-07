@@ -107,6 +107,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             //Teacher
             Route::post('/create/report', 'TeacherController@create')->name('teacher.index');
             Route::get('/fetch/classes', 'TeacherController@fetchAllClasses')->name('teacher.classes');
+            Route::get('/{user}//feedback', 'TeacherController@AllStudentFeedback')->name('teacher.feedback');
         });
 
         //Student Routes to be moved here later
@@ -115,8 +116,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
 
         Route::group(['prefix' => 'student'], function () {
-          //  Route::get('/', 'UsersController@index')->name('users.index');
-          //  Route::get('/{user}/show', 'UsersController@show')->name('users.show');
+           Route::get('/', 'UsersController@index')->name('users.index');
+           Route::get('/{user}/show', 'UsersController@show')->name('users.show');
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::get('/{user}/calendar', 'CalendarController@create')->name('calendar.create');
             Route::post('/{user}/date-confirm', 'CalendarController@confirmEvaluatorStore')->name('calendar.confirm');

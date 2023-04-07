@@ -18,6 +18,9 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+    /**
+     * @return [type]
+     */
     public function fetchStudentInEvaluation()
     {
         $teacherId =  Auth::user()->id;
@@ -120,12 +123,22 @@ class TeacherController extends Controller
             'data' => $highligtDays
         ]);
     }
+    /**
+     * @param mixed $weekDay
+     *
+     * @return [type]
+     */
     public function getSelectedDates($weekDay)
     {
 
         return date('Y-m-d', strtotime('next ' . $weekDay));
     }
 
+    /**
+     * @param mixed $weekday
+     *
+     * @return [type]
+     */
     public function weekdayCount($weekday)
     {
 
@@ -141,6 +154,13 @@ class TeacherController extends Controller
         return array_search($weekday, $week);
     }
 
+    /**
+     * @param mixed $givenDate
+     * @param mixed $currentWeekDayCount
+     * @param mixed $previousDayCount
+     *
+     * @return [type]
+     */
     public function calculateNextDate($givenDate, $currentWeekDayCount, $previousDayCount)
     {
         // $givenDate = "2022-01-31";
@@ -151,5 +171,9 @@ class TeacherController extends Controller
         $requireDateFormat = "Y-m-d";
         $nextDate = date($requireDateFormat, strtotime($englishText7, $timestampForGivenDate));
         return $nextDate;
+    }
+
+    public function AllStudentFeedback() {
+        return view('teacher.feedback');
     }
 }

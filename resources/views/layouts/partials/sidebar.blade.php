@@ -51,12 +51,21 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/{{ Auth::user()->id }}/show" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Profile</p>
-                            </a>
-                        </li>
+                        @role('student')
+                            <li class="nav-item">
+                                <a href="/student/{{ Auth::user()->id }}/show" class="nav-link active">
+                                    <i class="nav-icon fa-solid fa-user"></i>
+                                    <p>Profile</p>
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/show" class="nav-link active">
+                                    <i class="nav-icon fa-solid fa-user"></i>
+                                    <p>Profile</p>
+                                </a>
+                            </li>
+                        @endrole
                     </ul>
                 </li>
                 <li class="nav-item menu-closed">
@@ -125,14 +134,23 @@
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-flag" aria-hidden="true"></i>
                                     <p>Progress Report</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <a href="/admin/{{ Auth::user()->id }}/feedback" class="nav-link">
+                                    <i class="fa fa-solid fa-comment" aria-hidden="true"></i>
                                     <p>Feedback</p>
+                                </a>
+                            </li>
+                            <li id="events" class="nav-item  has-treeview">
+
+                                <a href="/admin/calendar" class="nav-link">
+                                    <i class="nav-icon fa fa-calendar"></i>
+                                    <p>
+                                        Upcoming Classes
+                                    </p>
                                 </a>
                             </li>
                         @endrole
@@ -140,7 +158,7 @@
                             <li class="nav-item">
                                 <a href="/student/{{ Auth::user()->id }}/show" class="nav-link">
                                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                    <p>Profile {{auth()->id()}}</p>
+                                    <p>Profile {{ auth()->id() }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -162,28 +180,7 @@
                                 </a>
                             </li>
                         @endrole
-
                     </ul>
-                </li>
-
-                {{-- Events --}}
-                <li id="events" class="nav-item  has-treeview">
-
-                    <a href="/admin/calendar" class="nav-link">
-                        <i class="nav-icon fa fa-calendar"></i>
-                        <p>
-                            Upcoming Events
-                        </p>
-                    </a>
-                </li>
-                <li id="events" class="nav-item  has-treeview">
-
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-pencil-square"></i>
-                        <p>
-                            Classes
-                        </p>
-                    </a>
                 </li>
                 <li id="events" class="nav-item  has-treeview">
 
@@ -194,6 +191,9 @@
                         </p>
                     </a>
                 </li>
+                @role('student')
+                {{-- Nothing to be displayed here as of now --}}
+                @else
                 <li id="events" class="nav-item  has-treeview">
 
                     <a href="/admin/create" class="nav-link">
@@ -203,9 +203,7 @@
                         </p>
                     </a>
                 </li>
-
-
-
+                @endrole
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

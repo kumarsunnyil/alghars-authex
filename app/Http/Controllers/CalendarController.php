@@ -37,12 +37,15 @@ class CalendarController extends Controller
     public function confirmEvaluatorStore(Request $request)
     {
 
+        $token = $request->session()->token();
+        $token = csrf_token();
         $studentId = Auth::user()->id;
         $currentStudentId =  Auth::user()->id;
         $user = User::find($currentStudentId);
         $student = StudentUser::where('email', $user->email)->first();
         DB::table('student_evaluation')
-        ->where('student_user_id', $student->id)->update(['evaluated_date' => $request->confirmDateAndtime]);
+        ->where('student_user_id', $student->id)
+        ->update(['evaluated_date' => $request->confirmDateAndtime]);
 
         //TODO
         // Add Event here and send email to the screenuser

@@ -1,6 +1,7 @@
 @extends('layouts.app-master')
 
 @section('content')
+<div class="container-fluid">
     <div class="bg-light p-4 rounded">
         <h1>Show user</h1>
         <div class="lead">
@@ -24,4 +25,5 @@
         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
         <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
     </div>
+</div>
 @endsection
