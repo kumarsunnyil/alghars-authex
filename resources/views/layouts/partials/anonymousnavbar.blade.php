@@ -41,15 +41,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">About</a>
+                        <a class="nav-link active" href="#aboutAlghrs">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Register</a>
+                        <a class="nav-link " href="#registration">Register</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#Contact">Contact</a>
                     </li>
                 </ul>
 
