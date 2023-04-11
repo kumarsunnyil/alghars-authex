@@ -92,6 +92,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/assign/screenuser/students', 'ScreenuserController@fetchScreenusers')->name('users.screenuser');
             Route::get('/assign/evaluator', 'ScreenuserController@assignEvaluator')->name('users.evaluator');
             Route::post('/assign/to/evaluator', 'ScreenuserController@assignEvaluatorStore')->name('users.evaluator');
+            Route::get('/view/evaluated', 'ScreenuserController@viewEvaluator')->name('users.evaluated');
             Route::get('/student/evaluate/list', 'ScreenuserController@fetchStudentInEvaluation')->name('users.evaluatestudent');
             Route::get('/evaluating/students', 'ScreenuserController@fetchStudentDetail')->name('users.evaluatestudent');
 

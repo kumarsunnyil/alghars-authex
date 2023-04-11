@@ -44,7 +44,8 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-closed">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+
+                        <i class="nav-icon fa-solid fa-user-gear"></i>
                         <p>
                             Manage your Account
                             <i class="right fas fa-angle-left"></i>
@@ -70,7 +71,8 @@
                 </li>
                 <li class="nav-item menu-closed">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+
+                        <i class="nav-icon fa fa-solid fa-list-check"></i>
                         <p>
                             Actions
                             <i class="right fas fa-angle-left"></i>
@@ -79,41 +81,60 @@
                     <ul class="nav nav-treeview">
                         @role('admin')
                             <li class="nav-item">
-                                <a href="/admin/assign/screenuser/students" class="nav-link">
+                                <a href="/admin/assign/screenuser/students" class="nav-link active">
                                     {{-- <i class="far fa-person-chalkboard nav-icon"></i> --}}
-                                    <i class="fa fa-users" aria-hidden="true" style="color:#268bd3"></i>
-                                    <p>Assign to ScreenUser</p>
+                                    <i class="fa fa-users nav-icon" aria-hidden="true"></i>
+                                    <p>Assign for evaluation</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/admin/users/manage-classes" class="nav-link">
+                                <a href="/admin/view/evaluated" class="nav-link active">
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
+                                    <p>Evaluated Students</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/users/manage-classes" class="nav-link active">
                                     <i class="far fa-user nav-icon"></i>
                                     <p>Manage Classes</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                    <p>Student</p>
+                                    <a href="{{ url('/') }}/admin/users" class="nav-link active">
+                                    {{-- <a href="{{ route('users.create') }}" class="nav-link active"> --}}
+                                    <i class="fa fa-users nav-icon" aria-hidden="true"></i>
+                                    <p>Manage Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                    <a href="{{ route('users.create') }}" class="nav-link active">
+                                    <i class="fa fa-user-plus nav-icon" aria-hidden="true"></i>
+                                    <p>Add New User</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link active">
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
+                                    <p>View Students</p>
                                 </a>
                             </li>
                         @endrole
                         @role('screenuser')
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Students</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Reports</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/student/evaluate/list" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Evaluation</p>
                                 </a>
                             </li>
@@ -122,13 +143,13 @@
                         @role('teacher')
                             <li class="nav-item">
                                 <a href="/admin/fetch/classes" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon " aria-hidden="true"></i>
                                     <p>View Schedule</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Manage Student</p>
                                 </a>
                             </li>
@@ -157,25 +178,25 @@
                         @role('student')
                             <li class="nav-item">
                                 <a href="/student/{{ Auth::user()->id }}/show" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Profile {{ auth()->id() }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/student/{{ Auth::user()->id }}/calendar" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Accept Evaluation</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Progress Report</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Classes</p>
                                 </a>
                             </li>
@@ -194,15 +215,15 @@
                 @role('student')
                 {{-- Nothing to be displayed here as of now --}}
                 @else
-                <li id="events" class="nav-item  has-treeview">
+                {{-- <li id="events" class="nav-item  has-treeview">
 
                     <a href="/admin/create" class="nav-link">
-                        <i class="nav-icon fa fa-flag"></i>
+                        <i class="nav-icon fa fa-user-plus"></i>
                         <p>
                             Add New Users
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 @endrole
             </ul>
         </nav>

@@ -37,6 +37,47 @@ class ScreenuserController extends Controller
     }
 
     /**
+     * @return [type]
+     */
+    public function viewEvaluator (){
+        $screenuser = $users = User::role('screenuser')->get();
+
+        foreach($screenuser as $user) {
+            //$user
+//             dd($user->name);
+            $studentList = DB::table('student_evaluation')
+            ->select(
+                'student_users.id',
+                'student_users.name',
+                'student_users.username',
+                'student_users.email',
+                'student_users.program_name',
+                'student_users.is_active'
+                )
+
+            ->join('student_users', 'student_users.id', '=', 'student_evaluation.student_user_id')
+            ->where('user_id', $user->id)
+            ->get();
+            foreach($studentList as $student){
+
+
+                $evaluatedStudentDetails [$user->name] []= array(
+                    "studentName" => $student->name,
+                    "studentUserName" => $student->username,
+                    "studentEmail" => $student->email,
+                    "studentIsActive" => $student->is_active?"Yes":"No",
+                );
+            }
+
+
+        }
+        // dd($evaluatedStudentDetails);
+        return view('users.evaluated', [
+            'mapped' => $evaluatedStudentDetails
+        ]);
+    }
+
+    /**
      * Assign an evaluator / screenuser to
      * single or multiple students this is
      * done by the Admin of the application

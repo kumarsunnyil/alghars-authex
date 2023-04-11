@@ -36,7 +36,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Assign New Student to the Evaluator</h3>
+                        <h3 class="card-title">Map student to Screenuser</h3>
                     </div>
                     @if (Session::has('successful_message'))
                         <div class="alert alert-success">

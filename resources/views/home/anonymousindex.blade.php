@@ -1,6 +1,6 @@
 @extends('layouts.app-master')
 @section('content')
-    <div class="bg-light p-5 rounded " style="margin-left:100px">
+
         @guest
             <section id="banner">
                 <div class="container">
@@ -228,7 +228,7 @@
                             </div>
                             <div class="col">
                                 <div class="card">
-                                    <img src="{!! url('assets/images/card-3.png') !!}" alt="card" class="card-img-top mt-5">
+                                    <img src="{!! url('assets/images/card-3.png') !!}" alt="card" class="card-img-top">
                                     <div class="card-body">
                                         <div class="cardFirstInfo d-flex align-items-center">
                                             <h2 class="cardCount">3</h2>
@@ -264,7 +264,6 @@
                                     <div class="card-body">
                                         <div class="cardFirstInfo d-flex align-items-center">
                                             <h2 class="cardCount">4</h2>
-
                                             <div class="rightInfo ps-4">
                                                 <h4 class="card-title">Al Ghars <br>
                                                     Events</h4>
@@ -413,41 +412,46 @@
                             <form method="post" action="{{ route('register.perform') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="singleInput">
+                                    <label for="floatingName">Student's Name</label>
                                     <input type="text" class="form-control" name="name" value="{{ old('age') }}"
                                         placeholder="Enter Student name" required="required" autofocus>
-                                    <label for="floatingName">Student's Name</label>
+
                                     @if ($errors->has('age'))
                                         <span class="text-danger text-left">{{ $errors->first('age') }}</span>
                                     @endif
                                 </div>
                                 <div class="singleInput">
-                                    <input type="text" class="form-control" name="age" value="{{ old('age') }}"
+                                <label for="floatingName">Age of student</label>
+                                <input type="text" class="form-control" name="age" value="{{ old('age') }}"
                                         placeholder="Enter your age" required="required" autofocus>
-                                    <label for="floatingName">Age of student</label>
+
                                     @if ($errors->has('age'))
                                         <span class="text-danger text-left">{{ $errors->first('age') }}</span>
                                     @endif
                                 </div>
                                 <div class="singleInput">
-                                    <input type="text" class="form-control" name="grade" value="{{ old('grade') }}"
+                                <label for="floatingName">Grade</label>
+                                <input type="text" class="form-control" name="grade" value="{{ old('grade') }}"
                                         placeholder="Enter the Grade" required="required" autofocus>
-                                    <label for="floatingName">Grade</label>
+
                                     @if ($errors->has('grade'))
                                         <span class="text-danger text-left">{{ $errors->first('grade') }}</span>
                                     @endif
                                 </div>
                                 <div class="singleInput">
-                                    <input type="text" class="form-control" name="p_name" value="{{ old('p_name') }}"
+                                <label for="floatingName">Parents Name</label>
+                                <input type="text" class="form-control" name="p_name" value="{{ old('p_name') }}"
                                         placeholder="Parents Name" required="required" autofocus>
-                                    <label for="floatingName">Parents Name</label>
+
                                     @if ($errors->has('p_name'))
                                         <span class="text-danger text-left">{{ $errors->first('p_name') }}</span>
                                     @endif
                                 </div>
                                 <div class="singleInput">
-                                    <input type="text" class="form-control" name="phone" value="{{ old('phone') }}"
+                                <label for="floatingName">Phone Number</label>
+                                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}"
                                         placeholder="Phone Number" required="required" autofocus>
-                                    <label for="floatingName">Phone Number</label>
+
                                     @if ($errors->has('phone'))
                                         <span class="text-danger text-left">{{ $errors->first('phone') }}</span>
                                     @endif
@@ -471,10 +475,11 @@
                                     @endif
                                 </div>
                                 <div class="singleInput">
-                                    <input type="text" class="form-control" name="location"
+                                <label for="floatingName">Enter the Location</label>
+                                <input type="text" class="form-control" name="location"
                                         value="{{ old('location') }}" placeholder="Enter the Location" required="required"
                                         autofocus>
-                                    <label for="floatingName">Enter the Location</label>
+
                                     @if ($errors->has('location'))
                                         <span class="text-danger text-left">{{ $errors->first('location') }}</span>
                                     @endif
@@ -502,7 +507,7 @@
                                         <span class="text-danger text-left">{{ $errors->first('message') }}</span>
                                     @endif
                                 </div>
-                                <button class="btn commonBtn" type="submit">Register</button>
+                                <button class="btn commonBtn" type="submit">Register Now</button>
                                 @include('auth.partials.copy')
                             </form>
                         </div>
@@ -630,5 +635,4 @@
             <script src="{!! url('assets/js/slick.js') !!}"></script>
             <script src="{!! url('assets/js/custom.js') !!}"></script>
         @endguest
-    </div>
 @endsection

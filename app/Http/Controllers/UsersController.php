@@ -32,7 +32,16 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+
+        // dd('Here');
+        // return view('users.create');
+
+        $user =  new User();
+        return view('users.create', [
+             'user' => $user,
+            'userRole' => $user->roles->pluck('name')->toArray(),
+            'roles' => Role::latest()->get()
+        ]);
     }
 
     /**
@@ -45,11 +54,11 @@ class UsersController extends Controller
      */
     public function store(User $user, StoreUserRequest $request)
     {
-        //For demo purposes only. When creating user or inviting a user
-        // you should create a generated random password and email it to the user
-        $user->create(array_merge($request->validated(), [
-            'password' => 'test'
+
+        $newUser =  $user->create(array_merge($request->validated(), [
+            'password' => 'test123'
         ]));
+        $newUser->assignRole($request->get('role'));
 
         return redirect()->route('users.index')
             ->withSuccess(__('User created successfully.'));

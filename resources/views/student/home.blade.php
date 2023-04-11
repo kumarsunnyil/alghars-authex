@@ -30,7 +30,7 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Date pickera</h3>
+                        <h3 class="card-title">Date picker</h3>
                     </div>
                     <div class="card-body">
                         <!-- Date and time -->
@@ -69,14 +69,7 @@
 
     <script>
  $(function () {
-    //Initialize Select2 Elements
-//     $('.select2').select2()
 
-//     //Initialize Select2 Elements
-//     $('.select2bs4').select2({
-//       theme: 'bootstrap4'
-//     })
-// ;
 
     //Date and time picker
     $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });

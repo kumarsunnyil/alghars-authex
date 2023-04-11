@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use \app\Models\User;
 use \app\Models\StudentUser;
-// use \app\Models\StudentUser;
-// use \App\Models\StudentEvaluation;
-// use \App\Models\Classes;
-// use \App\Models\Course;
-// use \App\Models\CourseBook;
+
 use Illuminate\Support\Facades\DB;
 use \Carbon\Carbon;
 
@@ -24,9 +20,6 @@ class TeacherController extends Controller
     public function fetchStudentInEvaluation()
     {
         $teacherId =  Auth::user()->id;
-
-        // $studentsForEvaluation = StudentEvaluation::where('user_id', $teacherId)->get();
-        //dd($studentsForEvaluation);
     }
 
     /**
@@ -51,11 +44,7 @@ class TeacherController extends Controller
         $userObject = DB::table('student_users')
             ->where('id', $classesObject->id)
             ->first();
-        // $userObject = StudentUser::find('id', $classesObject->id); // DB::table('student_users')
-        // ->find('id', $classesObject->id);
-        // ->where('course_book_id', $courseBookObject->id)
-        // ->first();
-        // dd($userObject);
+        
 
 
         $count = 0;
@@ -67,51 +56,51 @@ class TeacherController extends Controller
 
             if ($count == 0) {
 
-                 $currentDate = $this->getSelectedDates($weekDay);
+                $currentDate = $this->getSelectedDates($weekDay);
                 $tempDate = $currentDate;
-                 $currentWeekDayCount = $this->weekdayCount($weekDay);
+                $currentWeekDayCount = $this->weekdayCount($weekDay);
                 $previousDayCount = $currentWeekDayCount;
                 array_push($comingDaysForWeek, $currentDate);
             } else {
 
                 $currentWeekDayCount = $this->weekdayCount($weekDay);
-                $newDate =   $this->calculateNextDate($currentDate, $currentWeekDayCount, $previousDayCount) ;
+                $newDate =   $this->calculateNextDate($currentDate, $currentWeekDayCount, $previousDayCount);
                 $tempDate = $newDate;
                 array_push($comingDaysForWeek, $newDate);
                 $currentDate = $newDate;
                 $previousDayCount = $currentWeekDayCount;
             }
             $count++;
-             $tempDate . " Here " ;
-             $displayDate = explode("-", $tempDate);
+            $tempDate . " Here ";
+            $displayDate = explode("-", $tempDate);
             //create Object
             $data[$count]  = array(
                 'title' => $courseObject->program_name,
-                'start' => 'y', ($displayDate[1] -1), $displayDate[2], 12, 30,
-                'allDay'=> false,
-                'backgroundColor'=> '#0073b7', //Blue
-                'borderColor'=> '#0073b7' //Blue
+                'start' => 'y', ($displayDate[1] - 1), $displayDate[2], 12, 30,
+                'allDay' => false,
+                'backgroundColor' => '#0073b7', //Blue
+                'borderColor' => '#0073b7' //Blue
             );
             // echo "<br>";
         }
-    //    dd(json_encode($data));
+        //    dd(json_encode($data));
 
-// dd('format');
+        // dd('format');
 
-// format the data object
+        // format the data object
 
-/**
- *
- *                   {
+        /**
+         *
+         *                   {
                         title: 'Meeting Fixed',
                         start: new Date(y, 1, 19, 12, 30),
                         allDay: false,
                         backgroundColor: '#0073b7', //Blue
                         borderColor: '#0073b7' //Blue
                     }
- *
- *
- */
+         *
+         *
+         */
 
 
         $data = [
@@ -173,7 +162,8 @@ class TeacherController extends Controller
         return $nextDate;
     }
 
-    public function AllStudentFeedback() {
+    public function AllStudentFeedback()
+    {
         return view('teacher.feedback');
     }
 }

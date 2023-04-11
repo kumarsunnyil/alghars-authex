@@ -89,11 +89,7 @@
     @else
         @include('layouts.partials.anonymousnavbar')
     @endif
-    <div>
-        <main class="container mt-15">
             @yield('content')
-        </main>
-    </div>
 
 
 

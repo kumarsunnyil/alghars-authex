@@ -5,24 +5,16 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
 
-        <li><a href="{{ route('home.index') }}" class="nav-link px-2">Home</a></li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">About</a>
-        </li>
-
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#registration" class="nav-link">Register</a>
-        </li>
         @auth
-            @role('admin')
-                <li><a href="{{ url('/') }}/admin/users" class="nav-link px-2">Users</a></li>
-            @endrole
+        <img src="{!! url('assets/images/logo.png') !!}" alt="logo" class="img-fluid" style="
+    width: 35px;
+    height: 35px;
+">
+        @role('admin')
+            <li><a href="{{ url('/') }}/admin/users" class="nav-link px-2">Home</a></li>
+        @endrole
+    @endauth
 
-        @endauth
-
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#Contact" class="nav-link">Contact</a>
-        </li>
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -48,7 +40,6 @@
                 </form>
             </div>
         </li>
-
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -145,7 +136,6 @@
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
-
     </ul>
     @auth
         <div class="text-end">
@@ -153,8 +143,3 @@
         </div>
     @endauth
 </nav>
-
-{{-- @endif --}}
-
-
-<!-- /.navbar -->
