@@ -5,32 +5,34 @@
 @extends('layouts.app-master')
 
 @section('content')
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Students</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Registered Student with details</h1>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1 class="card-title">Registered Student with details</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item active">Students</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
                                     <td>Name</td>
                                     <td>
-                                        <b>{{ $student['name'] }}</b>
-                                        <span>
+                                        <span class="col-8"> <b>{{ $student['name'] }}</b></span>
+                                        <span class="col-4">
                                             <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
                                         </span>
 
@@ -78,7 +80,10 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="admin/student/evaluate/{{ $student['id'] }}">Evaluate Student </a>
+                                {{-- <a href="admin/student/evaluate/{{ $student['id'] }}">Evaluate Student </a> --}}
+                                <span class="col-4">
+                                    <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
+                                </span>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -94,6 +99,7 @@
         </div>
         <!-- /.container-fluid -->
     </section>
+</div>
 
     {{-- <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script> --}}
     <!-- Bootstrap 4 -->

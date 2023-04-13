@@ -10,8 +10,11 @@ use \App\Models\User;
 use \App\Models\StudentUser;
 use \App\Models\StudentEvaluation;
 
+use App\Events\StudentEvaluated;
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 
 class ScreenuserController extends Controller
 {
@@ -40,6 +43,7 @@ class ScreenuserController extends Controller
      * @return [type]
      */
     public function viewEvaluator (){
+
         $screenuser = $users = User::role('screenuser')->get();
 
         foreach($screenuser as $user) {
@@ -52,21 +56,27 @@ class ScreenuserController extends Controller
                 'student_users.username',
                 'student_users.email',
                 'student_users.program_name',
-                'student_users.is_active'
+                'student_users.is_active',
+                'student_evaluation.comment'
                 )
 
             ->join('student_users', 'student_users.id', '=', 'student_evaluation.student_user_id')
             ->where('user_id', $user->id)
             ->get();
-            foreach($studentList as $student){
 
+            // $count = 0;
+            foreach($studentList as $student){
+                // if($count==1)
+                    // dd(is_null($student->comment));
 
                 $evaluatedStudentDetails [$user->name] []= array(
                     "studentName" => $student->name,
                     "studentUserName" => $student->username,
                     "studentEmail" => $student->email,
                     "studentIsActive" => $student->is_active?"Yes":"No",
+                    "evaluated" => (!is_null($student->comment) ===false)?"Pending":"Evaluated",
                 );
+                // $count++;
             }
 
 
@@ -178,7 +188,6 @@ class ScreenuserController extends Controller
     public function submitEvaluation(Request $request) {
 
 
-        // dd($request->email);
         $student = StudentUser::where ('email', $request->email)->first();
         $evaluationObj = StudentEvaluation :: where ('student_user_id', $student->id)->first();
 
@@ -187,9 +196,19 @@ class ScreenuserController extends Controller
             $student->is_evaluated = 1;
             $student->save();
         }
+
+        // Event to be created and email sent
+
+        $to  = 'kumar.sunnyil@gmail.com'; // $student->email;
+        $evaluationEmailData = [
+            'title' => 'Student Evaluation Status',
+            'subject' => 'Student Evaluation Status',
+            'to' => $to,
+            'message' => 'You have been successfully evaluated, please pay the fees in the below link',
+        ];
+        event(new StudentEvaluated($evaluationEmailData));
+
         return redirect('/admin/users')->with('success', "Student Report Submitted.");
-
-
 
     }
 }

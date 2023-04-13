@@ -19,7 +19,7 @@ class CreateScreenUserSeeder extends Seeder
         $user = User::create([
             'name' => 'ScreenTeacher',
             'email' => 'screenteacher@gmail.com',
-            'username' => 'screen user',
+            'username' => 'screenuser',
             'password' => 'admin123'
         ]);
 

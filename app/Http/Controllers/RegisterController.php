@@ -78,12 +78,7 @@ class RegisterController extends Controller
                 $subject = 'Student Registration and from Alghars ';
                 //$to =  'kumar.sunnyil@gmail.com'; // $request->email;
                 $to =  $request->email;
-                $message = '
-
-
-
-
-                        ';
+                $message = '';
                 /**
                  * Generating the token during registration
                  */

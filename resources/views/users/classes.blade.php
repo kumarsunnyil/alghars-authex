@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{!! url('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') !!}">
     <link rel="stylesheet" href="{!! url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') !!}">
 
-
-
-
     <!-- Content Wrapper. Contains page content -->
 
     <div class="content-wrapper">
@@ -17,7 +14,6 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -32,8 +28,9 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Manage Classes</h3>
+                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Manage Classes</h1>
                     </div>
+
                     @if (Session::has('successful_message'))
                         <div class="alert alert-success">
                             {{ Session::get('successful_message') }}
@@ -164,4 +161,5 @@
             });
         })
     </script>
+
 @endsection

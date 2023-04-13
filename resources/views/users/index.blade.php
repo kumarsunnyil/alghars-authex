@@ -3,10 +3,22 @@
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Manage Users</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content-header">
+            <div class="container-fluid">
                 <div class="bg-light p-4 rounded">
                     <div class="lead">
                         <h1 style="color: #0499f2; font-weight: 900;">
-                            Manage users
+                            Manage Users
                         </h1>
                         {{-- <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">Add new user</a> --}}
                     </div>

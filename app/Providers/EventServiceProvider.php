@@ -21,7 +21,11 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\StudentRegistered::class=>[
             \App\Listeners\NotifyStudentRegistration::class,
             \App\Listeners\NotifyAdminNewStudentRegistration::class
-        ]
+        ],
+        \App\Events\StudentEvaluated::class=>[
+            \App\Listeners\NotifyStudentEvaluationStatus::class,
+            \App\Listeners\NotifyAdminStudentEvaluationStatus::class
+        ],
     ];
 
     /**

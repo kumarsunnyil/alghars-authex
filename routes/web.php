@@ -62,6 +62,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * User Routes
          */
         Route::group(['prefix' => '/admin'], function () {
+            Route::get('/student', 'UsersController@index')->name('users.index');
             Route::get('/users', 'UsersController@index')->name('users.index');
             Route::get('/create', 'UsersController@create')->name('users.create');
             Route::post('/create', 'UsersController@store')->name('users.store');
@@ -103,6 +104,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
            //Admin Manage Classes.
            Route::get('/users/manage-classes', 'AdminController@index')->name('users.classes');
            Route::post('/users/manage-classes', 'AdminController@manageStore')->name('users.classes');
+            //Admin Create Course
+           Route::get('/users/create-course', 'AdminController@createCourse')->name('users.createcourse');
+           Route::post('/users/create-course', 'AdminController@createStore')->name('users.createcourse');
         //    Route::get('/users', 'UsersController@index')->name('users.index');
 
             //Teacher

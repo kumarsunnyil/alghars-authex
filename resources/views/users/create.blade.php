@@ -4,11 +4,24 @@
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Add New Users</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content-header">
+            <div class="container-fluid">
 
                 <div class="bg-light p-4 rounded">
                     <div class="lead">
-                        <h1>Add new user</h1>
-                        Add new user and assign role.
+                        <h1 style="color: #0499f2; font-weight: 900;">
+                            Add new user and assign role.
+                        </h1>
                     </div>
 
                     <div class="mt-4">

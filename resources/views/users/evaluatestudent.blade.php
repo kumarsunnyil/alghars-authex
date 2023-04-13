@@ -4,25 +4,25 @@
 
 @extends('layouts.app-master')
 @section('content')
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Students</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1 class="card-title">Student For Evaluation</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item active">Students</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
+
 
                         <div class="card-body">
 
@@ -74,7 +74,7 @@
                                     <tr>
                                         <td>
 
-                                            <h1> There are no more students for evaluation</h1>
+                                            <h1 style="color: #0499f2; font-weight: 900;"> There are no more students for evaluation</h1>
                                         </td>
                                     </tr>
                                 </table>
@@ -94,6 +94,7 @@
         </div>
         <!-- /.container-fluid -->
     </section>
+</div>
     {{-- <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script> --}}
     <!-- Bootstrap 4 -->
     {{-- <script src="{!! url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') !!}"></script> --}}

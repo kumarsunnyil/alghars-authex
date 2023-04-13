@@ -5,78 +5,67 @@
 @extends('layouts.app-master')
 
 @section('content')
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Students</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1 class="card-title">Registered Student with details</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                  <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active">Students</li>
-                                  </ol>
-                                </div>
-                              </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="student-table" class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Student Name</th>
-                                        <th>Username</th>
-                                        <th>Email(s)</th>
-                                        <th>Active / In Active</th>
-                                        <th>Programe Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($students as $student)
-                                        <tr>
-                                            <td>{{ $student->name }}</td>
-                                            <td>{{ $student->username }} </td>
-                                            <td>{{ $student->email }} </td>
-                                            <td>{{ $student->is_active ? 'Active' : 'In Active' }} </td>
-                                            <td>{{ $student->program_name }} </td>
-
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Student Name</th>
-                                        <th>username</th>
-                                        <th>Email(s)</th>
-                                        <th>Active Student</th>
-                                        <th>Programe Name</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-
-                    <!-- /.card -->
+            <div class="card card-default">
+                <div class="card-header">
+                    <h1 class="card-title" style="color: #0499f2; font-weight: 900;">My Students</h1>
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </section>
+                <div>
+                    <table id="student-table" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Username</th>
+                                <th>Email(s)</th>
+                                <th>Active / In Active</th>
+                                <th>Programe Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($students as $student)
+                                <tr>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->username }} </td>
+                                    <td>{{ $student->email }} </td>
+                                    <td>{{ $student->is_active ? 'Active' : 'In Active' }} </td>
+                                    <td>{{ $student->program_name }} </td>
 
-    {{-- <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script> --}}
-    <!-- Bootstrap 4 -->
-    {{-- <script src="{!! url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') !!}"></script> --}}
-    <!-- DataTables  & Plugins -->
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>username</th>
+                                <th>Email(s)</th>
+                                <th>Active Student</th>
+                                <th>Programe Name</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+</div>
+
+
     <script src="{!! url('assets/plugins/datatables/jquery.dataTables.min.js') !!}"></script>
     <script src="{!! url('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') !!}"></script>
     <script src="{!! url('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') !!}"></script>
