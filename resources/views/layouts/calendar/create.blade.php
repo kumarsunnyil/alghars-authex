@@ -10,57 +10,99 @@
         <!-- Content Wrapper. Contains page content -->
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Calendar</h1>
-                        </div>
-
-                        Student Dashboard
-
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active">Confirm the date of evaluation</li>
+                                <li class="breadcrumb-item active">Events</li>
                             </ol>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
             <section>
+
                 <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Date picker</h3>
+                    @if ($scheduledDate !== null)
+                        <p class="py5"></p>
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Scheduled Event</h1>
+                            </div>
+                            <div class="col-12 col-sm-6 px20 ">
+                                <div class="card" style="width: 25rem;">
+                                    <div class="card-body">
+                                        <div class="card-title"><span> Name: </span> <span>
+                                                <b>{{ $screenuser->name }}</b></span></div>
+                                        <p class="card-text"><span> Email: </span> <span><b>{{ $screenuser->email }}</b></span>
+                                        </p>
+                                        <hr />
+                                        <p class="card-text"><span> Date of Meeting:</span>
+                                            <span><b>{{ $scheduledDate }}</b></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <form method="post" action="{{ url('/student') }}/{{ Auth::user()->id }}/date-confirm/">
-                            @csrf
-                            <div class="card-body">
-                                <!-- Date and time -->
-                                <div class="form-group">
-                                    <label>Date and time:</label>
-                                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                        <input name="confirmDateAndtime"  type="text" class="form-control datetimepicker-input"
-                                            data-target="#reservationdatetime" />
-                                        <input type= "hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}"  type="text" class="form-control datetimepicker-input"
-                                            data-target="#reservationdatetime" />
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <div class="input-group-append" data-target="#reservationdatetime"
-                                            data-toggle="datetimepicker">
-                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    @else
+                        <div class="col-md-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Confirm Evaluation</h1>
+                                </div>
+
+                                <div class="col-12 col-sm-6 px-20 ">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <p class="card-text"><span> Name: </span> <span>
+                                                    <b>{{ $screenuser->name }}</b></span>
+                                                </p>
+                                            </div>
+                                            <p class="card-text"><span> Email: </span>
+                                                <span><b>{{ $screenuser->email }}</b></span>
+                                            </p>
+                                            <hr />
                                         </div>
                                     </div>
                                 </div>
-                                {{-- {{auth()->user()->name}}&nbsp; {{auth()->user()->id}}&nbsp; --}}
-                                <button type="submit" class="btn btn-primary"  id="confrmEval">Confirm Evaluation</button>
+                                <div class="col-12 col-sm-6">
+                                    <form method="post" action="{{ url('/student') }}/{{ Auth::user()->id }}/date-confirm/">
+                                        @csrf
+                                        <div class="card-body">
+                                            <!-- Date and time -->
+                                            <div class="form-group">
+                                                <label>Date and time:</label>
+                                                <div class="input-group date" id="reservationdatetime"
+                                                    data-target-input="nearest">
+                                                    <input name="confirmDateAndtime" type="text"
+                                                        class="form-control datetimepicker-input"
+                                                        data-target="#reservationdatetime" />
+                                                    <input type="hidden" id="user_id" name="user_id"
+                                                        value="{{ Auth::user()->id }}" type="text"
+                                                        class="form-control datetimepicker-input"
+                                                        data-target="#reservationdatetime" />
+                                                    {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> --}}
+                                                    <div class="input-group-append" data-target="#reservationdatetime"
+                                                        data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- {{auth()->user()->name}}&nbsp; {{auth()->user()->id}}&nbsp; --}}
+                                            <button type="submit" class="btn btn-primary" id="confrmEval">Confirm
+                                                Evaluation</button>
+                                        </div>
+                                        {{-- <a class="w-100 btn btn-lg btn-info" href="{{ url('/student') }}/date-confirm" class="btn btn-warning">Sign-up</a> --}}
+                                    </form>
+                                </div>
                             </div>
-                            {{-- <a class="w-100 btn btn-lg btn-info" href="{{ url('/student') }}/date-confirm" class="btn btn-warning">Sign-up</a> --}}
-                        </form>
+                        </div>
+                    @endif
 
-                    </div>
-                </div>
+
             </section>
 
         </div>
@@ -89,7 +131,7 @@
                     },
                     onChangeDateTime: function(dp, $input) {
                         // alert($input.val())
-                        document.getElementById("timeVal").value  = $input.val()
+                        document.getElementById("timeVal").value = $input.val()
 
                     }
 

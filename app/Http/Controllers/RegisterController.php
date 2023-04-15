@@ -108,7 +108,6 @@ class RegisterController extends Controller
      */
     public function registered()
     {
-        //  dd('Registered Page display');
         return view('auth.registered');
     }
 
@@ -146,10 +145,6 @@ class RegisterController extends Controller
 
     public function createStudentRole(User $user)
     {
-        // $role = Role::create(['name' => 'student']);
-        // $permissions = Permission::pluck('id','id')->all();
-        // $role->syncPermissions($permissions);
-        // $user->assignRole([$role->id]);
         $user->assignRole([4]);
     }
 

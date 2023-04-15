@@ -82,8 +82,6 @@
                         @role('admin')
                             <li class="nav-item">
                                 <a href="/admin/assign/screenuser/students" class="nav-link active">
-                                    {{-- <i class="far fa-person-chalkboard nav-icon"></i> --}}
-                                    {{-- <i class="fa fa-users nav-icon" aria-hidden="true"></i> --}}
                                     <i class="fa fa-arrow-right-to-bracket nav-icon" aria-hidden="true"></i>
                                     <p>Assign for evaluation</p>
                                 </a>
@@ -134,17 +132,17 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link active">
-                                    <i class="fa fa-people-group nav-icon" aria-hidden="true"></i>
-                                    <p>Reports</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/admin/student/evaluate/list" class="nav-link active">
                                     <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>For Evaluation</p>
                                 </a>
                             </li>
+                            {{-- <li class="nav-item">
+                                <a href="/admin/{{ Auth::user()->id }}/all/students" class="nav-link active">
+                                    <i class="fa fa-people-group nav-icon" aria-hidden="true"></i>
+                                    <p>Reports</p>
+                                </a>
+                            </li> --}}
                         @endrole
 
                         @role('teacher')
@@ -185,20 +183,23 @@
                         @role('student')
                             <li class="nav-item">
                                 <a href="/student/{{ Auth::user()->id }}/show" class="nav-link active">
-                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
-                                    <p>Profile {{ auth()->id() }}</p>
+                                    {{-- <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i> --}}
+                                    <i class="fa fa-user nav-icon" aria-hidden="true"></i>
+                                    <p>Profile</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/student/{{ Auth::user()->id }}/calendar" class="nav-link active">
-                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
-                                    <p>Accept Evaluation</p>
+                                    {{-- <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i> --}}
+                                    <i class="fa fa-calendar nav-icon" aria-hidden="true"></i>
+                                    <p>Events</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link active">
-                                    <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
-                                    <p>Progress Report</p>
+                                    {{-- <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i> --}}
+                                    <i class="fa fa-line-chart nav-icon" aria-hidden="true"></i>
+                                    <p>Report</p>
                                 </a>
                             </li>
                             <li class="nav-item">

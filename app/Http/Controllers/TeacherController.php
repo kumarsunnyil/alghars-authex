@@ -29,6 +29,8 @@ class TeacherController extends Controller
     public function fetchAllClasses()
     {
         $teacherId =  Auth::user()->id;
+
+
         $courseBookObject = DB::table('course_book')->where('user_id', $teacherId)->first();
         $courseObject = DB::table('courses')
             ->where('user_id', $teacherId)
@@ -38,13 +40,13 @@ class TeacherController extends Controller
         $classesObject = DB::table('classes')
             ->where('course_id', $courseObject->id)
             ->first();
-        $highligtDays = explode(",", $classesObject->days_of_week);
+        $highlightDays = explode(",", $classesObject->days_of_week);
 
 
         $userObject = DB::table('student_users')
             ->where('id', $classesObject->id)
             ->first();
-        
+
 
 
         $count = 0;
@@ -52,7 +54,7 @@ class TeacherController extends Controller
         $previousDayCount = 0;
         $comingDaysForWeek = array();
         $data = [];
-        foreach ($highligtDays as $weekDay) {
+        foreach ($highlightDays as $weekDay) {
 
             if ($count == 0) {
 
@@ -101,15 +103,16 @@ class TeacherController extends Controller
          *
          *
          */
-
+dd($highlightDays);
 
         $data = [
-            'classDays' => $highligtDays,
+            'classDays' => $highlightDays,
             'user' => $userObject,
             'classDates' => $comingDaysForWeek
         ];
+
         return view('teacher.classes', [
-            'data' => $highligtDays
+            'data' => $highlightDays
         ]);
     }
     /**

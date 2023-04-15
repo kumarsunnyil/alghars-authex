@@ -115,6 +115,8 @@ class AdminController extends Controller
         //     'user_id' => 'required',
         // ]);
         // dd('reached');
+
+        // TODO Need to implement the transaction here
         {
         $courseBook = CourseBook::create(
             [
@@ -127,7 +129,6 @@ class AdminController extends Controller
                 'end_date' => $request->end_date,
                 ]
             );
-            // dd($courseBook);
         $course = Course::create(
             [
                 'course_book_id'=> $courseBook->id,
@@ -140,5 +141,44 @@ class AdminController extends Controller
         };
             return redirect('/admin/users/manage-classes/')->with('success', "Classes Created");
 
+    }
+
+    /**
+     *
+     * display the screenusers report to the admin
+     * @return [type]
+     */
+    public function screenReport(Request $request){
+
+
+        $params = explode("/", $request->path());
+        $studentId = $params[4];
+        $adminId = $params[4];
+
+
+
+        // $admin = $users = User::role('admin');
+
+
+        $studentList = DB::table('student_evaluation')
+        ->select(
+            'student_users.id',
+            'student_users.name',
+            'student_users.username',
+            'student_users.email',
+            'student_users.program_name',
+            'student_users.is_active',
+            'student_evaluation.comment'
+            )
+
+        ->join('student_users', 'student_users.id', '=', 'student_evaluation.student_user_id')
+        ->where('student_users.id', $studentId)
+        ->get();
+
+
+        $data = $studentList[0];
+        return view('users.screenreport', [
+            'data' => $data
+       ]);
     }
 }

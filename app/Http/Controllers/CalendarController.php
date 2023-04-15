@@ -20,13 +20,19 @@ class CalendarController extends Controller
     public function create()
     {
 
-        // $currentStudentId =  Auth::user()->id;
-        // $user = User::find($currentStudentId);
-        // // echo $user->email;
-        // $student = StudentUser::where('email', $user->email)->first();
-        // $evaluation = StudentEvaluation::where('student_user_id', $student->id)->first();
+        $studentId =  Auth::user()->id;
+        $studentEmail =  Auth::user()->email;
+        $student = StudentUser::where('email', $studentEmail)->first();
+        $date = '';
+        $fromEvaluation = StudentEvaluation::where('student_user_id', $student->id)->first();
+        $user = User::where('id', $fromEvaluation->user_id)->first();
+        $date = $fromEvaluation->evaluated_date;
 
-        return view('layouts.calendar.create');
+        return view('layouts.calendar.create', [
+            'students' =>  $student,
+            'screenuser' =>  $user,
+            'scheduledDate' => $date
+        ]);
     }
 
     /**

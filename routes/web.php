@@ -71,6 +71,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
 
+            Route::get('/{user}/screen/report/{student}', 'AdminController@screenReport')->name('users.screenreport');
+
 
 /**
  * Profile image code below.

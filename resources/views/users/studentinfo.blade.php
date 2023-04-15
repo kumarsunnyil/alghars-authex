@@ -39,6 +39,10 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Evaluation Date</td>
+                                    <td><b>{{ $evaluationDate }}</b></td>
+                                </tr>
+                                <tr>
                                     <td>Age</td>
                                     <td>{{ $student['age'] }}</td>
                                 </tr>

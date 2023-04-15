@@ -63,25 +63,20 @@ class ScreenuserController extends Controller
             ->join('student_users', 'student_users.id', '=', 'student_evaluation.student_user_id')
             ->where('user_id', $user->id)
             ->get();
-
-            // $count = 0;
+            $evaluatedStudentDetails = array();
             foreach($studentList as $student){
-                // if($count==1)
-                    // dd(is_null($student->comment));
 
                 $evaluatedStudentDetails [$user->name] []= array(
+                    "studentId" => $student->id,
                     "studentName" => $student->name,
                     "studentUserName" => $student->username,
                     "studentEmail" => $student->email,
                     "studentIsActive" => $student->is_active?"Yes":"No",
                     "evaluated" => (!is_null($student->comment) ===false)?"Pending":"Evaluated",
                 );
-                // $count++;
             }
 
-
         }
-        // dd($evaluatedStudentDetails);
         return view('users.evaluated', [
             'mapped' => $evaluatedStudentDetails
         ]);
@@ -95,12 +90,8 @@ class ScreenuserController extends Controller
 
     public function assignEvaluatorStore(Request $request)
     {
-
-        //dd('Here');
-        // dd($request->studentThrottle);
         $screenUser = User::where('email', $request->screenuser)->first();
         foreach (explode(',', $request->studentThrottle) as $studentEmail) {
-            //$studentUser = StudentUser::where('email', $studentEmail)->first();
             $studentUser = StudentUser::where('email', $studentEmail)->first();
             $evaluation = StudentEvaluation::create(
                 [
@@ -121,12 +112,10 @@ class ScreenuserController extends Controller
         $screenUserId =  Auth::user()->id;
         $evaluation = StudentEvaluation::where('user_id', $screenUserId)
         ->get();
-        // dd($evaluation);
         $students = array();
         foreach ($evaluation as $evaluating) {
             $currentStudent = StudentUser::find($evaluating->student_user_id);
             if($currentStudent->is_evaluated == 0) {
-
 
                 $students[] = [
 
@@ -154,10 +143,19 @@ class ScreenuserController extends Controller
     public function fetchStudentInfo(Request $request)
     {
         $params = explode("/", $request->path());
-
         $studentId = $params[3]; // from the URI params
+
+        $screenUserId =  Auth::user()->id;
+        $evaluation = StudentEvaluation::where('user_id', $screenUserId)
+        ->where('student_user_id', $studentId)
+        ->get();
+        $date = '';
+         foreach ($evaluation as $evaluating)
+            $date = str_replace("/",":",$evaluating->evaluated_date);
+
         $student = StudentUser::find($studentId);
         return view('users.studentinfo', [
+            'evaluationDate'=>$date,
             'student' => $student
         ]);
     }
@@ -205,6 +203,7 @@ class ScreenuserController extends Controller
             'subject' => 'Student Evaluation Status',
             'to' => $to,
             'message' => 'You have been successfully evaluated, please pay the fees in the below link',
+            'studentDetails' => $student,
         ];
         event(new StudentEvaluated($evaluationEmailData));
 

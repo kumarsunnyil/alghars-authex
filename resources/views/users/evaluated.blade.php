@@ -17,6 +17,7 @@
                                     <th>Student Name</th>
                                     <th>Student Email</th>
                                     <th>Evaluation Status</th>
+                                    <th>Report</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,9 +28,15 @@
                                             <td> {{ $key }}</td>
                                             <td>{{ $student['studentName'] }}</td>
                                             <td>{{ $student['studentEmail'] }}</td>
+                                            <td> {{ $student['evaluated'] }} </td>
                                             <td>
-                                                {{ $student['evaluated'] }}
-                                            </td>
+                                            @if ($student['evaluated']=='Evaluated')
+
+                                                <a href="/admin/{{auth()->user()->id}}/screen/report/{{ $student['studentId'] }}" class="btn btn-info">View Evaluation</a>
+
+                                            @endif
+
+                                             </td>
                                         </tr>
                                     @endforeach
                                 @endforeach
