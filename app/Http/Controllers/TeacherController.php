@@ -32,87 +32,14 @@ class TeacherController extends Controller
 
 
         $courseBookObject = DB::table('course_book')->where('user_id', $teacherId)->first();
-        $courseObject = DB::table('courses')
-            ->where('user_id', $teacherId)
-            ->where('course_book_id', $courseBookObject->id)
-            ->first();
+        if (!is_null($courseBookObject)) {
 
-        $classesObject = DB::table('classes')
-            ->where('course_id', $courseObject->id)
-            ->first();
-        $highlightDays = explode(",", $classesObject->days_of_week);
-
-
-        $userObject = DB::table('student_users')
-            ->where('id', $classesObject->id)
-            ->first();
-
-
-
-        $count = 0;
-        $currentDate = '';
-        $previousDayCount = 0;
-        $comingDaysForWeek = array();
-        $data = [];
-        foreach ($highlightDays as $weekDay) {
-
-            if ($count == 0) {
-
-                $currentDate = $this->getSelectedDates($weekDay);
-                $tempDate = $currentDate;
-                $currentWeekDayCount = $this->weekdayCount($weekDay);
-                $previousDayCount = $currentWeekDayCount;
-                array_push($comingDaysForWeek, $currentDate);
-            } else {
-
-                $currentWeekDayCount = $this->weekdayCount($weekDay);
-                $newDate =   $this->calculateNextDate($currentDate, $currentWeekDayCount, $previousDayCount);
-                $tempDate = $newDate;
-                array_push($comingDaysForWeek, $newDate);
-                $currentDate = $newDate;
-                $previousDayCount = $currentWeekDayCount;
-            }
-            $count++;
-            $tempDate . " Here ";
-            $displayDate = explode("-", $tempDate);
-            //create Object
-            $data[$count]  = array(
-                'title' => $courseObject->program_name,
-                'start' => 'y', ($displayDate[1] - 1), $displayDate[2], 12, 30,
-                'allDay' => false,
-                'backgroundColor' => '#0073b7', //Blue
-                'borderColor' => '#0073b7' //Blue
-            );
-            // echo "<br>";
+            return view('teacher.newclasses', [
+                //'data' => $highlightDays
+            ]);
         }
-        //    dd(json_encode($data));
-
-        // dd('format');
-
-        // format the data object
-
-        /**
-         *
-         *                   {
-                        title: 'Meeting Fixed',
-                        start: new Date(y, 1, 19, 12, 30),
-                        allDay: false,
-                        backgroundColor: '#0073b7', //Blue
-                        borderColor: '#0073b7' //Blue
-                    }
-         *
-         *
-         */
-dd($highlightDays);
-
-        $data = [
-            'classDays' => $highlightDays,
-            'user' => $userObject,
-            'classDates' => $comingDaysForWeek
-        ];
-
-        return view('teacher.classes', [
-            'data' => $highlightDays
+        return view('teacher.emptyclasses', [
+            'data' => 'You have no classes Scheduled'
         ]);
     }
     /**

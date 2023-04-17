@@ -19,7 +19,9 @@ class CourseBook extends Model
         'course_book_id',
         'user_id',
         'program_name',
-        'total_no_of_classes',
+        'no_of_classes',
         'description',
+        'end_date',
+        'start_date'
     ];
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app-master')
 
 @section('content')
-    {{-- <link rel="stylesheet" href="{!! url('assets/plugins/daterangepicker/daterangepicker.css') !!}"> --}}
     <link rel="stylesheet" href="{!! url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') !!}">
     <link rel="stylesheet" href="{!! url('assets/plugins/select2/css/select2.min.css') !!}">
     <link rel="stylesheet" href="{!! url('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') !!}">
@@ -14,7 +13,7 @@
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Manage Classes</li>
+                            <li class="breadcrumb-item active">Manage Classes </li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Manage Classes</h1>
+                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Manage Classes / Add Student</h1>
                     </div>
 
                     @if (Session::has('successful_message'))
@@ -45,18 +44,17 @@
                                         <div class="select2-purple">
                                             <select class="form-control select2 select2-danger"
                                                 data-dropdown-css-class="select2-danger" data-placeholder="Select Course"
-                                                data-dropdown-css-class="select2-purple" style="width: 100%;"
+                                                {{-- data-dropdown-css-class="select2-purple" style="width: 100%;" --}}
                                                 name="courseSelect" id="courseSelect">
                                                 <option value="Select Course">Select Course</option>
                                                 @foreach ($data['courses'] as $key => $course)
-                                                    {{ $course['program_name'] }}
+                                                    {{-- {{ $course['program_name'] }} --}}
                                                     <option value="{{ $course['program_name'] }}">
                                                         {{ $course['program_name'] }}
                                                     </option>
-                                                    <input type="hidden" value="{{ $course['program_name'] }} "
-                                                        id="course_name" name="course_name" />
-                                                @endforeach
-                                            </select>
+                                                    @endforeach
+                                                </select>
+                                                <input type="hidden" value="{{ $course['program_name'] }}" id="course_name" name="course_name" />
                                         </div>
                                     </div>
                                 </div>
@@ -94,8 +92,8 @@
                                         <label>Teacher</label>
 
                                         <select class="form-control select2 select2-danger"
-                                            data-dropdown-css-class="select2-danger" style="width: 100%;height:55px" name="teacher"
-                                            id="teacher">
+                                            data-dropdown-css-class="select2-danger" style="width: 100%;height:55px"
+                                            name="teacher" id="teacher">
                                             {{ $count = 0 }}
                                             @foreach ($data['teacher'] as $teacher)
                                                 @if ($count == 0)
@@ -114,8 +112,8 @@
                                         <label>Student</label>
                                         <div class="select2-purple">
                                             <select class="select2" multiple="multiple" data-placeholder="Select a Student"
-                                                data-dropdown-css-class="select2-purple" style="width: 100%; " name="student"
-                                                id="student">
+                                                data-dropdown-css-class="select2-purple" style="width: 100%; "
+                                                name="student" id="student">
                                                 @foreach ($data['students'] as $student)
                                                     <option value="{{ $student->email }}">{{ $student->name }} </option>
                                                 @endforeach
@@ -132,7 +130,7 @@
                                 <div class="col-12 col-sm-6">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-people-group nav-icon"></i>
-                                        Create More Classes
+                                        Create Classes
                                     </button>
                                 </div>
                         </form>

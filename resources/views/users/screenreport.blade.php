@@ -34,10 +34,7 @@
                     </div>
                     <hr>
                 </div>
-                <div class="mt-4">
-                    <a href="/admin/{{ Auth::user()->id }}/edit" class="btn btn-info primary">Edit </a>
-                    <a href="/admin/student" class="btn btn-default primary text-style">Back </a>
-                </div>
+
             </div>
         </section>
     </div>

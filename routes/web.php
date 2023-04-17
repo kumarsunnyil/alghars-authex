@@ -109,12 +109,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             //Admin Create Course
            Route::get('/users/create-course', 'AdminController@createCourse')->name('users.createcourse');
            Route::post('/users/create-course', 'AdminController@createStore')->name('users.createcourse');
-        //    Route::get('/users', 'UsersController@index')->name('users.index');
+           //    Route::get('/users', 'UsersController@index')->name('users.index');
 
             //Teacher
             Route::post('/create/report', 'TeacherController@create')->name('teacher.index');
             Route::get('/fetch/classes', 'TeacherController@fetchAllClasses')->name('teacher.classes');
             Route::get('/{user}//feedback', 'TeacherController@AllStudentFeedback')->name('teacher.feedback');
+
+            // //Calendar Routes
+            Route::get('/fullcalendar/ckeditor', 'FullCalenderDemoController@index')->name('teacher.newclasses');
+            Route::post('/fullcalendar/create', 'FullCalenderDemoController@create')->name('teacher.newclasses');
+            Route::post('/fullcalendar/update', 'FullCalenderDemoController@update')->name('teacher.newclasses');
+            Route::post('/fullcalendar/delete', 'FullCalenderDemoController@delete')->name('teacher.newclasses');
+
+
+
+
         });
 
         //Student Routes to be moved here later

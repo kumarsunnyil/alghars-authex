@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+    protected $table = 'courses';
         /**
      * The attributes that are mass assignable.
      *
@@ -17,9 +18,7 @@ class Course extends Model
         'course_book_id',
         'user_id',
         'program_name',
-        'no_of_classes',
+        'total_no_of_classes',
         'description',
-        'start_date',
-        'end_date',
     ];
 }
