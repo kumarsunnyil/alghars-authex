@@ -203,7 +203,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/admin/{{ Auth::user()->id }}/pick-evaluation" class="nav-link active">
+                                <a href="/student/fetch/classes" class="nav-link active">
+
                                     <i class="fa fa-graduation-cap nav-icon" aria-hidden="true"></i>
                                     <p>Classes</p>
                                 </a>

@@ -100,7 +100,7 @@
 
                         <div class="singleInput">
                             <textarea class="form-control" name="message" value="{{ old('message') }}" placeholder="Enter your message"
-                                required="required" cols="30" rows="5" autofocus>
+                                required="required" cols="30" rows="5" autofocus >
                             </textarea>
                             <label for="floatingName">Enter your message</label>
                             @if ($errors->has('message'))

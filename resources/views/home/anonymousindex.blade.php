@@ -501,7 +501,7 @@
                                 <div class="singleInput">
                                     <label for="floatingName">Enter your message</label>
                                     <textarea class="form-control" name="message" value="{{ old('message') }}" placeholder="Enter your message"
-                                        required="required" cols="30" rows="5" autofocus>
+                                        required="required" cols="30" rows="5" autofocus style="height: 234px !important;">
                                     </textarea>
                                     @if ($errors->has('message'))
                                         <span class="text-danger text-left">{{ $errors->first('message') }}</span>
@@ -622,7 +622,7 @@
                                     Abu Dhabi - Al Khalidiyah - Al Ghawas Building - Office No. 503
                                 </li>
                             </ul>
-                            <p class="copyright">Copyright @2023 Alghars</p>
+                            {{-- <p class="copyright">Copyright @2023 Alghars</p> --}}
                         </div>
                     </div>
                 </div>

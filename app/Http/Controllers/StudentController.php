@@ -71,4 +71,26 @@ class StudentController extends Controller
             'students' => $students
         ]);
     }
+
+
+    public function fetchAllClasses()
+    {
+
+        $studentEmail =  Auth::user()->email;
+        $studentObj = StudentUser::where('email', $studentEmail)->first();
+
+        // dd($studentObj);
+        $classes = DB::table('classes')->where('student_user_id', $studentObj->id)->first();
+
+
+        if (!is_null($classes)) {
+
+            return view('teacher.newclasses', [
+                //'user' =>$studentObj->id
+            ]);
+        }
+        return view('teacher.emptyclasses', [
+            'data' => 'You have no classes Scheduled'
+        ]);
+    }
 }

@@ -24,6 +24,7 @@
 
 
             <script>
+                var userEmail = {{ Js::from(auth()->user()->email)}};
                 $(document).ready(function() {
                     var SITEURL = "{{ url('/') }}";
                     $.ajaxSetup({
@@ -47,12 +48,13 @@
                         selectHelper: true,
                         select: function(start, end, allDay) {
                             var title = prompt('Event Title:');
+                            
                             if (title) {
                                 var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                                 $.ajax({
                                     url: SITEURL + "/admin/fullcalendar/create",
-                                    data: 'title=' + title + '&start=' + start + '&end=' + end,
+                                    data: 'title=' + title + '&start=' + start + '&end=' + end + '&user=' + userEmail ,
                                     type: "POST",
                                     success: function(data) {
                                         displayMessage("Added Successfully");

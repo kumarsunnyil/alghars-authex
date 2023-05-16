@@ -34,8 +34,9 @@ class TeacherController extends Controller
         $courseBookObject = DB::table('course_book')->where('user_id', $teacherId)->first();
         if (!is_null($courseBookObject)) {
 
+
             return view('teacher.newclasses', [
-                //'data' => $highlightDays
+                'user' => $teacherId
             ]);
         }
         return view('teacher.emptyclasses', [
@@ -94,6 +95,19 @@ class TeacherController extends Controller
 
     public function AllStudentFeedback()
     {
-        return view('teacher.feedback');
+
+        $teacher = User::role('student')->get();
+
+        $data = [
+            'teacher' => $teacher,
+
+        ];
+        return view('teacher.feedback', [
+            'data' => $data
+        ]);
+    }
+    public function storeFeedback()
+    {
+        dd('feedback controller method ');
     }
 }
