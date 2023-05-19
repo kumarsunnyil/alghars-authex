@@ -14,6 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_evaluation', function (Blueprint $table) {
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('student_user_id');

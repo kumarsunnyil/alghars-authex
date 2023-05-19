@@ -53,13 +53,15 @@
                                 @endif
                             </div>
 
+
+
                             <div class="mb-3">
                                 <label for="role" class="form-label">Role</label>
-                                <select class="form-control" name="role" required>
+                                <select class="form-control" name="role" id="role"  required>
                                     <option value="">Select role</option>
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}"
-                                            @if ($role->name !== 'student') {{ in_array($role->name, $userRole) ? 'selected' : '' }}>{{ $role->name }}</option> @endif
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            {{-- @if ($role->name !== 'student') {{ in_array($role->name, $userRole) ? 'selected' : '' }}>{{ $role->name }}</option> @endif --}}
                                             @endforeach
                                 </select>
                                 @if ($errors->has('role'))
@@ -67,7 +69,7 @@
                                 @endif
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Save user</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                             <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
                         </form>
                     </div>

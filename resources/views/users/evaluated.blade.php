@@ -7,13 +7,13 @@
 
                 <div class="bg-light p-4 rounded">
                     <div class="lead">
-                        <h1 style="color: #0499f2; font-weight: 900;">Evaluation List</h1>
+                        <h1 style="color: #0499f2; font-weight: 900;">Evaluation List & Status</h1>
                     </div>
                     <div class="mt-4">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Screenuser</th>
+                                    <th>Evaluator</th>
                                     <th>Student Name</th>
                                     <th>Student Email</th>
                                     <th>Evaluation Status</th>
@@ -43,7 +43,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Screenuser</th>
+                                    <th>Evaluator</th>
                                     <th>Student Name</th>
                                     <th>Student Email</th>
                                     <th>Evaluation Status</th>

@@ -32,10 +32,6 @@ class UsersController extends Controller
      */
     public function create()
     {
-
-        // dd('Here');
-        // return view('users.create');
-
         $user =  new User();
         return view('users.create', [
              'user' => $user,
@@ -54,12 +50,10 @@ class UsersController extends Controller
      */
     public function store(User $user, StoreUserRequest $request)
     {
-
         $newUser =  $user->create(array_merge($request->validated(), [
             'password' => 'test123'
         ]));
         $newUser->assignRole($request->get('role'));
-
         return redirect()->route('users.index')
             ->withSuccess(__('User created successfully.'));
     }
@@ -135,6 +129,6 @@ class UsersController extends Controller
 
         return view('users.index', compact('users'));
     }
- 
+
 
 }
