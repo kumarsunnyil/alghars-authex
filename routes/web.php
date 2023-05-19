@@ -27,6 +27,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
+    Route::get('/arabic', 'HomeController@arabic')->name('home.arabic');
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/about', 'StaticController@index')->name('about.index');
 

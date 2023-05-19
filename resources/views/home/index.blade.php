@@ -5,12 +5,11 @@
         @auth
             <p class="lead">Dashboard </p>
             @role('admin')
-More to come here
-
+                More to come here
             @endrole
 
             @role('student')
-            @include('student.home')
+                @include('student.home')
                 Student Dashboard Details
             @endrole
 
@@ -19,7 +18,21 @@ More to come here
 
         @guest
 
-        @include('home.anonymousindex')
+
+
+            @php
+                $arabicLang = false;
+                $currentUrl = url()->full();
+                if (str_contains($currentUrl, 'arabic')) {
+                    $arabicLang = true;
+                }
+            @endphp
+
+            @if ($arabicLang)
+                @include('home.arabicanonymousindex')
+            @else
+                @include('home.anonymousindex')
+            @endif
         @endguest
     </div>
 @endsection
