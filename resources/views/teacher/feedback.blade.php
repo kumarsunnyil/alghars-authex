@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Create Course</h1>
+                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Student Feedback Form</h1>
                     </div>
                     <form method="post" action="{{ url('/') }}/admin/{{auth()->user()->id}}/feedback">
                         @csrf
@@ -76,39 +76,8 @@
                     </form>
                 </div>
             </div>
-            <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script>
-            <script src="{!! url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
-            <script src="{!! url('assets/plugins/moment/moment.min.js') !!}"></script>
-            <script src="{!! url('assets/plugins/daterangepicker/daterangepicker.js') !!}"></script>
-            <script>
-                $(function() {
-                    $('#reservation').daterangepicker()
-                    $('#daterange-btn').daterangepicker({
-                            ranges: {
-                                'Today': [moment(), moment()],
-                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                                    'month').endOf('month')]
-                            },
-                            startDate: moment().subtract(29, 'days'),
-                            endDate: moment()
-                        },
-                        function(start, end) {
-                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                                'MMMM D, YYYY'))
-                        }
-                    )
-                    $("#reservation").change(function() {
-                        var selectedDate = $(this).val().split(" - ");
-                        document.getElementById('start_date').value = selectedDate[0].split("/").reverse().join(
-                        "-");
-                        document.getElementById('end_date').value = selectedDate[1].split("/").reverse().join("-");
-                    });
-                })
-            </script>
+
+
         </section>
     </div>
 

@@ -5,7 +5,7 @@
         @auth
             <p class="lead">Dashboard </p>
             @role('admin')
-                More to come here
+            <script>window.location = "/admin/users";</script>
             @endrole
 
             @role('student')

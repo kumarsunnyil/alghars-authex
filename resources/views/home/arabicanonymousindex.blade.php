@@ -507,7 +507,7 @@
                                 @endif
                             </div>
                             <div class="singleInput">
-                                <label for="floatingName">Age of student</label>
+                                <label for="floatingName"> عمر الطالب </label>
                                 <input type="text" class="form-control" name="age" value="{{ old('age') }}"
                                     placeholder="Enter your age" required="required" autofocus>
 

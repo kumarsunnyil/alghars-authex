@@ -104,6 +104,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
            Route::get('/{user}/student/evaluate/{student}', 'ScreenuserController@evaluationSubmission')->name('users.studentinfo');
            Route::post('/{user}/evaluation/submit/{student}', 'ScreenuserController@submitEvaluation')->name('users.studentinfo');
 
+           Route::post('/{user}/feedback/{student}', 'ScreenuserController@submitEvaluation')->name('users.studentinfo');
+
            //Admin Manage Classes.
            Route::get('/users/manage-classes', 'AdminController@index')->name('users.classes');
            Route::post('/users/manage-classes', 'AdminController@manageStore')->name('users.classes');

@@ -22,21 +22,25 @@
                             </thead>
                             <tbody>
 
+
                                 @foreach ($mapped as $key => $studentList)
                                     @foreach ($studentList as $student)
+
+
+
                                         <tr>
                                             <td> {{ $key }}</td>
                                             <td>{{ $student['studentName'] }}</td>
-                                            <td>{{ $student['studentEmail'] }}</td>
+                                            <td><a href="/student/{{$student['studentUserTableID']}}/show">{{ $student['studentEmail'] }}
+                                                </a></td>
                                             <td> {{ $student['evaluated'] }} </td>
                                             <td>
-                                            @if ($student['evaluated']=='Evaluated')
+                                                @if ($student['evaluated'] == 'Evaluated')
+                                                    <a href="/admin/{{ auth()->user()->id }}/screen/report/{{ $student['studentId'] }}"
+                                                        class="btn btn-info">View Evaluation</a>
+                                                @endif
 
-                                                <a href="/admin/{{auth()->user()->id}}/screen/report/{{ $student['studentId'] }}" class="btn btn-info">View Evaluation</a>
-
-                                            @endif
-
-                                             </td>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endforeach

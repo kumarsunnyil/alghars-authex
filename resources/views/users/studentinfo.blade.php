@@ -5,105 +5,117 @@
 @extends('layouts.app-master')
 
 @section('content')
-<div class="content-wrapper">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Students</li>
-                    </ol>
-                </div>
-                <div class="col-sm-6">
-                    <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Registered Student with details</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
-                                <tr>
-                                    <td>Name</td>
-                                    <td>
-                                        <span class="col-8"> <b>{{ $student['name'] }}</b></span>
-                                        <span class="col-4">
-                                            <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
-                                        </span>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Evaluation Date</td>
-                                    <td><b>{{ $evaluationDate }}</b></td>
-                                </tr>
-                                <tr>
-                                    <td>Age</td>
-                                    <td>{{ $student['age'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>{{ $student['email'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Parents Name</td>
-                                    <td>{{ $student['p_name'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Phone</td>
-                                    <td>{{ $student['phone'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Location</td>
-                                    <td>{{ $student['location'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Program</td>
-                                    <td>{{ $student['program_name'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Message</td>
-                                    <td>{{ $student['name'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Active</td>
-                                    <td>{{ $student['is_active'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Evaluated</td>
-                                    <td>{{ $student['name'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Grade</td>
-                                    <td>{{ $student['grade'] }}</td>
-                                </tr>
-                            </table>
-                            <div>
-                                {{-- <a href="admin/student/evaluate/{{ $student['id'] }}">Evaluate Student </a> --}}
-                                <span class="col-4">
-                                    <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}" class="btn btn-primary" >Evaluate Student </a>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Students</li>
+                        </ol>
                     </div>
-                    <!-- /.card -->
-
-
-                    <!-- /.card -->
+                    <div class="col-sm-6">
+                        <h1 class="card-title" style="color: #0499f2; font-weight: 900;">Registered Student with details
+                        </h1>
+                    </div>
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-</div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>
+                                            <span class="col-8"> <b>{{ $student['name'] }}</b></span>
+                                            <span class="col-4">
+                                                @if ($evaluationDate == '')
+                                                    <p class="lead">Please Reach out to the student to schedule a time for
+                                                        evaluation</p>
+                                                    <a href="#" class="btn btn-primary">Send Reminder By Email</a>
+                                                @else
+                                                    <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}"
+                                                        class="btn btn-primary">Evaluate Student </a>
+                                                @endif
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluation Date</td>
+                                        <td><b>{{ $evaluationDate }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age</td>
+                                        <td>{{ $student['age'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{ $student['email'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Parents Name</td>
+                                        <td>{{ $student['p_name'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone</td>
+                                        <td>{{ $student['phone'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Location</td>
+                                        <td>{{ $student['location'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Program</td>
+                                        <td>{{ $student['program_name'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Message</td>
+                                        <td>{{ $student['name'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Active</td>
+                                        <td>{{ $student['is_active'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluated</td>
+                                        <td>{{ $student['name'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grade</td>
+                                        <td>{{ $student['grade'] }}</td>
+                                    </tr>
+                                </table>
+                                <div>
+                                    @if ($evaluationDate == '')
+                                        <p class="lead">Please Reach out to the student to schedule a time for
+                                            evaluation</p>
+                                        <a href="#" class="btn btn-primary">Send Reminder By Email</a>
+                                    @else
+                                        <a href="/admin/{{ Auth::user()->id }}/student/evaluate/{{ $student['id'] }}"
+                                            class="btn btn-primary">Evaluate Student </a>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+    </div>
 
     {{-- <script src="{!! url('assets/plugins/jquery/jquery.min.js') !!}"></script> --}}
     <!-- Bootstrap 4 -->
